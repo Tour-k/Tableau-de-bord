@@ -11,7 +11,7 @@ const widgetRouter = require('./routes/widgets');
 
 var app = express();
 
-mongoose.connect('mongodb+srv:////TODO: mettre adresse de la bdd MangoDB),
+mongoose.connect('mongodb+srv://Manuel:pg8aWRsoysPU1r7r@cluster0-8oeuo.mongodb.net/test',
     { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion MongoDB success !'))
