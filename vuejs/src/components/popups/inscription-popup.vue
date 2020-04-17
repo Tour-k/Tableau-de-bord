@@ -62,7 +62,7 @@ import VueCookie from 'vue-cookies';
       sendSignupReq() {
         this.errors= [];
         this.errorStatus = false;
-        axios.post('http://localhost:3001/api/auth/signup',  {
+        axios.post('http://localhost:3000/api/auth/signup',  {
           email: this.email,
           password: this.password,
           username: this.username

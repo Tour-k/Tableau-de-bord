@@ -24,7 +24,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://localhost:3001/api/auth/user', 
+    axios.get('http://localhost:3000/api/auth/user', 
     { params: {email: 'test7@gmail.com'}}
     ).then(response => {
       console.log(response);

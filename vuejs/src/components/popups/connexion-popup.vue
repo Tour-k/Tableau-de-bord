@@ -56,7 +56,7 @@ import VueCookie from 'vue-cookies';
     }),
     methods: {
       sendConnectReq() {
-        axios.post('http://localhost:3001/api/auth/login',  {
+        axios.post('http://localhost:3000/api/auth/login',  {
           email: this.email,
           password: this.password
         })
