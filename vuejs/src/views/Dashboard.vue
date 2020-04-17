@@ -1,8 +1,9 @@
 <template>
   <div class="dashboard">
+
     <NavBarDashboard></NavBarDashboard>
-    <h1 class="mt-60">Test  {{ user }}</h1>
-   
+    <h1 class="mt-60">Test  {{ user }}</h1> 
+    <p>{{$store.state.tocken}}</p>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 // @ is an alias to /src
 import axios from 'axios';
 import NavBarDashboard from "@/components/Base/navbar-dashboard"
+import store from '../store/index.js'
 
 export default {
   name: 'Dashboard',
@@ -23,14 +25,15 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://localhost:3000/api/auth/user', 
-    { params: {email: 'test7@gmail.com'}}
-    ).then(response => {
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/api/auth/user',
+      headers:{'Authorization' : `Basic ${store.state.tocken}`},
+      data: {email: 'K@gmail.com'}
+    })
+    .then(function (response) {
       console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+    });
   }
 }
 </script>

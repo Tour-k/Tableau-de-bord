@@ -28,7 +28,7 @@ exports.login = (req, res) => {
                     if (!valid) {
                         return res.status(401).json({ error: 'Mot de passe incorrect !' });
                     }
-                    console.log(user.username);
+                    
                     res.status(200).json({
                         userId: user._id,
                         username: user.username,
@@ -46,6 +46,7 @@ exports.login = (req, res) => {
 // TODO : check si le user qui fait la requête est bien logué 
 
 exports.getUser = (req, res) => {
+    console.log(req.body.email + ' mail !!')
     User.findOne({ email: req.body.email })
         .then(user => res.status(200).json(user))
         .catch(error => res.status(400).json({ error }));

@@ -105,11 +105,11 @@
 
   export default {
     props: {
-      username: {
-        type: String,
-        required: true,
-        default: 'John',
-      }, 
+      // username: {
+      //   type: String,
+      //   required: true,
+      //   default: 'John',
+      // }, 
       userAvatar: {
         type: String,
         required: true,
