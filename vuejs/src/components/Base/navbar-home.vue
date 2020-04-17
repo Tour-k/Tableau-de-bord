@@ -27,7 +27,8 @@
                     <v-list-item
                     v-for="(item, index) in navItems"
                     :key="index"
-                    
+                    router
+                    :to="navItem.route"
                     >
                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item>
@@ -41,7 +42,10 @@
                 </v-menu>
             </div>
             <div v-if="$vuetify.breakpoint.mdAndUp">
-                <v-btn text v-for="navItem in navItems" :key="navItem.id" :class="$style.navLink">
+                <v-btn text v-for="navItem in navItems" :key="navItem.id" 
+                :class="$style.navLink"
+                router
+                :to="navItem.route">
                     {{navItem.title}}
                 </v-btn>
                 <PopupConnexion></PopupConnexion>
@@ -61,8 +65,8 @@ export default {
     data () {
         return {
             navItems: [
-                { id: 0, title: "Explorer", route: "" },
-                { id: 1, title: "Blog", route: "" },
+                { id: 0, title: "Explorer", route: "/dashboard/annonyme" },
+                { id: 1, title: "Blog", route: "/blog" },
             ],
         }
     }

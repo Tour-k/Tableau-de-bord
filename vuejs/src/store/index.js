@@ -11,15 +11,15 @@ const store = new Vuex.Store({
   },
   state: {
     username : '', 
-    tocken: '',
+    token: '',
     userId: ''
   },
   mutations: {
     INIT_USERNAME(state, payload){
       state.username = payload
     }, 
-    INIT_TOCKEN(state, payload){
-      state.tocken = payload
+    INIT_TOKEN(state, payload){
+      state.token = payload
     },
     INIT_USERID(state, payload){
       state.userId = payload
@@ -29,8 +29,8 @@ const store = new Vuex.Store({
     setUsername(context, username){
       context.commit('INIT_USERNAME', username)
     },
-    setTocken(context, tocken){
-      context.commit('INIT_TOCKEN', tocken)
+    setTocken(context, token){
+      context.commit('INIT_TOKEN', token)
     },
     setUserId(context, userId){
       context.commit('INIT_USERID', userId)

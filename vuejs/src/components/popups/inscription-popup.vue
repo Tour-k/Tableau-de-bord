@@ -70,7 +70,7 @@ import VueCookie from 'vue-cookies';
         .then(response => {
           console.log(response.data);
           this.$store.dispatch('setUsername', response.data.username)
-          this.$store.dispatch('setTocken', response.data.token)
+          this.$store.dispatch('setToken', response.data.token)
           this.$store.dispatch('setUserId', response.data.userId)
           VueCookie.set('userId', response.data.userId);
           VueCookie.set('token', response.data.token)

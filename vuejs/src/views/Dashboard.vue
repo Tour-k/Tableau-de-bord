@@ -28,7 +28,7 @@ export default {
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/auth/user',
-      headers:{'Authorization' : `Basic ${store.state.tocken}`},
+      headers:{'Authorization' : `Basic ${store.state.token}`},
       data: {email: 'K@gmail.com'}
     })
     .then(function (response) {

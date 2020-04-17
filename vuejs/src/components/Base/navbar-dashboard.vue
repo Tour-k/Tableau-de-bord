@@ -59,12 +59,12 @@
             <img :src=userAvatar>
           </v-list-item-avatar>
           <v-list-item-avatar v-else>
-            <img :src=randomAnnonymusPicture>
+            <img :src=randomAnonymusPicture>
           </v-list-item-avatar>
 
           <v-list-item-content>
             
-            <v-list-item-title>{{ connected ? $store.state.username : "Annonyme" }}</v-list-item-title>
+            <v-list-item-title>{{ connected ? $store.state.username : "Anonyme" }}</v-list-item-title>
             <v-list-item-subtitle v-if="connected">Connecté</v-list-item-subtitle>
             <v-list-item-subtitle v-else><v-btn>Connecte toi !</v-btn></v-list-item-subtitle>
           </v-list-item-content>
@@ -77,8 +77,8 @@
         <v-list-item
           v-for="item in sideMenuItems"
           :key="item.title"
-          @click="test()"
-          class
+          router
+          :to="item.route"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -122,7 +122,7 @@
       }
     },
     computed: {
-      randomAnnonymusPicture() {
+      randomAnonymusPicture() {
         let randomNbr = Math.floor(Math.random() * 10);
         return "https://randomuser.me/api/portraits/lego/" + randomNbr + ".jpg";
       }
@@ -131,9 +131,10 @@
       drawer: false,
       group: null,
       sideMenuItems: [
-        { title: 'Dashboards', icon: 'mdi-view-dashboard' },
-        { title: 'Services', icon: 'mdi-apps' },
-        { title: 'My Account', icon: 'mdi-account' },
+        { title: 'Home', icon: 'mdi-home', route:'/'},
+        { title: 'Dashboards', icon: 'mdi-view-dashboard', route:'/dashboard/anonyme' },
+        { title: 'Services', icon: 'mdi-apps', route:'#' },
+        { title: 'My Account', icon: 'mdi-account', route:"/my-account" },
       ],
 
     }),

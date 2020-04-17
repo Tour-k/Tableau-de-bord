@@ -46,8 +46,19 @@ exports.login = (req, res) => {
 // TODO : check si le user qui fait la requête est bien logué 
 
 exports.getUser = (req, res) => {
-    console.log(req.body.email + ' mail !!')
     User.findOne({ email: req.body.email })
         .then(user => res.status(200).json(user))
         .catch(error => res.status(400).json({ error }));
+};
+
+exports.updateUser =(req, res) => {
+    User.updateOne({  email: req.body.email }, { ...req.body, email: req.params.email })
+        .then(() => res.status(200).json({ message: 'User modifié !'}))
+        .catch(error => res.status(400).json({ error }));
+};
+
+exports.deleteUser = (req, res) => {
+    User.deleteOne({ email: req.body.email })
+        .then(() => { res.status(200).json({ message: 'User deleted!' }) })
+        .catch((error) => { res.status(400).json({ error: error }) });
 };
