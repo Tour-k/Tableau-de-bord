@@ -14,21 +14,31 @@
           <span class="headline">Inscription</span>
         </v-card-title>
         <v-card-text>
+          <v-form>
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
+                <v-text-field label="Username*" required v-model="username"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Password*" type="password" required></v-text-field>
+                <v-text-field label="Email*" required v-model="email"></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field label="Password*" type="password" required v-model="password"></v-text-field>
               </v-col>
             </v-row>
           </v-container>
+          </v-form>
+            <ul v-if="errors && errors.length">
+              <li v-for="(error, index) of errors" :key="index">
+                {{error.message}}
+              </li>
+            </ul>
           <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" @click="dialog = false">S'inscrire</v-btn>
+          <v-btn color="primary" @click="sendSignupReq()">S'inscrire</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -36,10 +46,39 @@
 </template>
 
 <script>
+import axios from 'axios';
+import VueCookie from 'vue-cookies';
+
   export default {
     data: () => ({
       dialog: false,
+      username: null,
+      email: null,
+      password: null,
+      errors:[],
+      errorStatus: false
     }),
+    methods: {
+      sendSignupReq() {
+        this.errors= [];
+        this.errorStatus = false;
+        axios.post('http://localhost:3001/api/auth/signup',  {
+          email: this.email,
+          password: this.password,
+          username: this.username
+        })
+        .then(response => {
+          console.log(response.data);
+          VueCookie.set('userId', response.data.userId);
+          VueCookie.set('token', response.data.token)
+          this.$router.push('Dashboard/' +response.data.userId);
+        })
+        .catch(e => {
+          this.errors.push(e)
+          this.errorStatus = true;
+        })
+      }
+    }
   }
 </script>
 

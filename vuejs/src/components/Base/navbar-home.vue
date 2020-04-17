@@ -20,7 +20,7 @@
                     v-on="on"
                     icon
                     >
-                        <v-icon>mdi-menu</v-icon>
+                        <v-icon large color="primary">mdi-menu</v-icon>
                     </v-btn>
                 </template>
                 <v-list class="px-3">
@@ -31,7 +31,9 @@
                     >
                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item>
-                    <PopupConnexion></PopupConnexion>
+                    <div>
+                        <PopupConnexion></PopupConnexion>
+                    </div>
                     <div>
                         <PopupInscription></PopupInscription>
                     </div>
