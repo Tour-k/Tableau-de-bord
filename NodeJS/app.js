@@ -1,17 +1,18 @@
-const express = require('express');
-const  path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+const http = require('http');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
 const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
-// const widgetRouter = require('./routes/widget');
+const widgetRouter = require('./routes/widget');
 const userRoutes = require('./routes/user');
 
 var app = express();
 
-mongoose.connect('mongodb+srv://Manuel:pg8aWRsoysPU1r7r@cluster0-8oeuo.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://adminIRC:fnmM8ulX9Si9Zzj1@ircdatabase-vkyrn.mongodb.net/test?retryWrites=true&w=majority',
     { useNewUrlParser: true,
             useFindAndModify: false,
             useCreateIndex: true,
@@ -35,8 +36,7 @@ app.all("/*", function(req, res, next){
 app.use('/', indexRouter);
 
 app.use('/api/auth', userRoutes);
+app.use('/widget', widgetRouter);
 
-// app.use('/users', usersRouter);
-// app.use('/widgets', widgetRouter);
 
 module.exports = app;
