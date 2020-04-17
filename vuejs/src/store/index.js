@@ -8,7 +8,21 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   plugins: [createPersistedState()],
   modules: {
+  },
+  state: {
+    username: 'Robert'
+  },
+  mutations: {
+    INIT_USERNAME(state, payload){
+      state.username = payload
+    }
+  }, 
+  actions: {
+    setUsername(context, username){
+      context.commit('INIT_USERNAME', username)
+    }
   }
+
 })
 
 export default store

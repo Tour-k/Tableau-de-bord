@@ -23,7 +23,7 @@
 
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Welcome {{ connected ? username : "Annonyme" }}</v-toolbar-title>
+      <v-toolbar-title>Welcome {{ connected ? $store.state.username : "Annonyme" }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -64,7 +64,7 @@
 
           <v-list-item-content>
             
-            <v-list-item-title>{{ connected ? username : "Annonyme" }}</v-list-item-title>
+            <v-list-item-title>{{ connected ? $store.state.username : "Annonyme" }}</v-list-item-title>
             <v-list-item-subtitle v-if="connected">Connecté</v-list-item-subtitle>
             <v-list-item-subtitle v-else><v-btn>Connecte toi !</v-btn></v-list-item-subtitle>
           </v-list-item-content>
@@ -101,12 +101,14 @@
 </template>
 
 <script>
+
+
   export default {
     props: {
       username: {
         type: String,
         required: true,
-        default: "John",
+        default: 'John',
       }, 
       userAvatar: {
         type: String,

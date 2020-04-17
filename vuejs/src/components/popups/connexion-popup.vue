@@ -62,6 +62,7 @@ import VueCookie from 'vue-cookies';
         })
         .then(response => {
           console.log(response.data);
+          this.$store.dispatch('setUsername', response.data.username)
           VueCookie.set('userId', response.data.userId);
           VueCookie.set('token', response.data.token)
           this.$router.push('Dashboard/'+response.data.userId)
