@@ -28,7 +28,7 @@
                     v-for="(item, index) in navItems"
                     :key="index"
                     router
-                    :to="navItem.route"
+                    :to="item.route"
                     >
                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item>
@@ -79,8 +79,8 @@ export default {
     .brandTitle{
         color: $color-font-main;
     }
+    
     .navLink{
-
         text-transform: capitalize;
     }
 

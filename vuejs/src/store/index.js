@@ -29,7 +29,7 @@ const store = new Vuex.Store({
     setUsername(context, username){
       context.commit('INIT_USERNAME', username)
     },
-    setTocken(context, token){
+    setToken(context, token){
       context.commit('INIT_TOKEN', token)
     },
     setUserId(context, userId){

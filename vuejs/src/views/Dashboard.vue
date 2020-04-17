@@ -3,7 +3,7 @@
 
     <NavBarDashboard></NavBarDashboard>
     <h1 class="mt-60">Test  {{ user }}</h1> 
-    <p>{{$store.state.tocken}}</p>
+    <p>{{$store.state.token}}</p>
   </div>
 </template>
 
