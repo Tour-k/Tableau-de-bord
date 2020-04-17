@@ -3,26 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2b5bd009-c697-4791-aaf8-937be1061d31" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/widget.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/widget.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/.coveralls.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/.eslintrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/component.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/node.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/src/browser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/debug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/inspector-log.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/debug/src/node.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/debug/src/node.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vuejs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vuejs/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +42,32 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="13.12.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../JS_Fram/JSF_irc_2019/server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/www" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Node.js.bin/www">
+    <configuration default="true" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="stars" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.bin/www" />
+      <item itemvalue="npm.start" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -81,7 +83,10 @@
       <workItem from="1586438403117" duration="1448000" />
       <workItem from="1586505190022" duration="599000" />
       <workItem from="1586506576505" duration="5906000" />
-      <workItem from="1586523022729" duration="3893000" />
+      <workItem from="1586523022729" duration="6459000" />
+      <workItem from="1587023150525" duration="4508000" />
+      <workItem from="1587105346693" duration="1119000" />
+      <workItem from="1587113701982" duration="1148000" />
     </task>
     <task id="LOCAL-00001" summary="add widget files">
       <created>1586524496827</created>
@@ -97,58 +102,192 @@
       <option name="project" value="LOCAL" />
       <updated>1586524711011</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add widget file, schema still need to be define">
+      <created>1586527116460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586527116460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix login and signup">
+      <created>1586602088667</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586602088667</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix server connexion an routes">
+      <created>1587025851663</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587025851663</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add hidden bool on widget model">
+      <created>1587026071183</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587026071183</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fix some mongo error">
+      <created>1587026832389</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1587026832389</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add gitignore and sof fix on login">
+      <created>1587028798412</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1587028798412</updated>
+    </task>
+    <task id="LOCAL-00009" summary="some fix on srv">
+      <created>1587031490998</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1587031490998</updated>
+    </task>
+    <task id="LOCAL-00010" summary="delete some log on srv">
+      <created>1587031650206</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1587031650206</updated>
+    </task>
+    <task id="LOCAL-00011" summary="change port srv">
+      <created>1587032164684</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1587032164684</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add getuser">
+      <created>1587044953875</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1587044953875</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add fuc widget controller set, get and update">
+      <created>1587046827621</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1587046827621</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add auth in user controller">
+      <created>1587046885922</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1587046885922</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix dual listen">
+      <created>1587113989170</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1587113989170</updated>
+    </task>
+    <task id="LOCAL-00016" summary="change server port listening">
+      <created>1587114283559</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1587114283559</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add user controller can now login ans sign in" />
     <MESSAGE value="add widget files" />
     <MESSAGE value="update app.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="update app.js" />
+    <MESSAGE value="add widget file, schema still need to be define" />
+    <MESSAGE value="fix login and signup" />
+    <MESSAGE value="fix server connexion an routes" />
+    <MESSAGE value="add hidden bool on widget model" />
+    <MESSAGE value="Fix some mongo error" />
+    <MESSAGE value="add gitignore and sof fix on login" />
+    <MESSAGE value="some fix on srv" />
+    <MESSAGE value="delete some log on srv" />
+    <MESSAGE value="change port srv" />
+    <MESSAGE value="add getuser" />
+    <MESSAGE value="add fuc widget controller set, get and update" />
+    <MESSAGE value="add auth in user controller" />
+    <MESSAGE value="fix dual listen" />
+    <MESSAGE value="change server port listening" />
+    <option name="LAST_COMMIT_MESSAGE" value="change server port listening" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="418" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587032102876">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="418" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1587032102876" />
     <state x="707" y="375" width="496" height="298" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1586524912148">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="707" y="375" width="496" height="298" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1044@0.0.1920.1044" timestamp="1586524912148" />
-    <state x="821" y="79" width="779" height="907" key="CommitChangelistDialog2" timestamp="1586524710909">
+    <state x="821" y="79" width="779" height="907" key="CommitChangelistDialog2" timestamp="1587114283443">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="821" y="79" width="779" height="907" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1586524710909" />
-    <state x="743" y="280" width="424" height="488" key="FileChooserDialogImpl" timestamp="1586509076818">
+    <state x="821" y="79" width="779" height="907" key="CommitChangelistDialog2/0.0.1920.1044@0.0.1920.1044" timestamp="1587114283443" />
+    <state x="100" y="100" width="1720" height="844" key="DiffContextDialog" timestamp="1587025816312">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="743" y="280" width="424" height="488" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1586509076818" />
-    <state width="937" height="272" key="GridCell.Tab.0.bottom" timestamp="1586524477184">
+    <state x="100" y="100" width="1720" height="844" key="DiffContextDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1587025816312" />
+    <state x="743" y="280" width="424" height="488" key="FileChooserDialogImpl" timestamp="1587031439237">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="937" height="272" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1586524477184" />
-    <state width="937" height="272" key="GridCell.Tab.0.center" timestamp="1586524477183">
+    <state x="743" y="280" width="424" height="488" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1587031439237" />
+    <state width="1874" height="213" key="GridCell.Tab.0.bottom" timestamp="1587114300689">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="937" height="272" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1586524477183" />
-    <state width="937" height="272" key="GridCell.Tab.0.left" timestamp="1586524477183">
+    <state width="1874" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1587114300689" />
+    <state width="1874" height="213" key="GridCell.Tab.0.center" timestamp="1587114300688">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="937" height="272" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1586524477183" />
-    <state width="937" height="272" key="GridCell.Tab.0.right" timestamp="1586524477184">
+    <state width="1874" height="213" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1587114300688" />
+    <state width="1874" height="213" key="GridCell.Tab.0.left" timestamp="1587114300687">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="937" height="272" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1586524477184" />
+    <state width="1874" height="213" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1587114300687" />
+    <state width="1874" height="213" key="GridCell.Tab.0.right" timestamp="1587114300689">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state width="1874" height="213" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1587114300689" />
+    <state x="709" y="205" width="492" height="637" key="RollbackChangesDialog" timestamp="1587024870052">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="709" y="205" width="492" height="637" key="RollbackChangesDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1587024870052" />
     <state x="459" y="112" width="992" height="734" key="SettingsEditor" timestamp="1586525130837">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="459" y="112" width="992" height="734" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1586525130837" />
-    <state x="555" y="258" width="800" height="532" key="Vcs.Push.Dialog.v2" timestamp="1586524714510">
+    <state x="555" y="258" width="800" height="532" key="Vcs.Push.Dialog.v2" timestamp="1587114286233">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="555" y="258" width="800" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1586524714510" />
-    <state x="757" y="437" width="395" height="174" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586524445209">
+    <state x="555" y="258" width="800" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1044@0.0.1920.1044" timestamp="1587114286233" />
+    <state x="757" y="437" width="405" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587114386055">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="757" y="437" width="395" height="174" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1044@0.0.1920.1044" timestamp="1586524445209" />
+    <state x="757" y="437" width="405" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1044@0.0.1920.1044" timestamp="1587114386055" />
   </component>
 </project>
