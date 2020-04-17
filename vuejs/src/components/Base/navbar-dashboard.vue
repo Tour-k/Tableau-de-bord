@@ -1,0 +1,144 @@
+<template>
+  <div>
+    <v-app-bar
+      app
+      flat  
+      absolute
+      color="#6A76AB"
+      dark
+      clipped
+      shrink-on-scroll
+      permanent
+      prominent
+      src="https://picsum.photos/1920/1080?random"
+      fade-img-on-scroll
+      scroll-target="#scrolling-techniques-3"
+    >
+      <template v-slot:img="{ props }">
+        <v-img
+          v-bind="props"
+          gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
+        ></v-img>
+      </template>
+
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Welcome {{ connected ? username : "Annonyme" }}</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+
+      <template v-slot:extension>
+        <v-tabs align-with-title>
+          <v-tab>Dashboard 1</v-tab>
+          <v-tab>Dashboard 2</v-tab>
+          <v-tab>Dashboard 3</v-tab>
+        </v-tabs>
+      </template>
+    </v-app-bar>
+      <v-navigation-drawer
+        v-model="drawer"
+        absolute
+        left
+        temporary
+      >
+      <template v-slot:prepend>
+        <v-list-item two-line>
+          <v-list-item-avatar v-if="connected">
+            <img :src=userAvatar>
+          </v-list-item-avatar>
+          <v-list-item-avatar v-else>
+            <img :src=randomAnnonymusPicture>
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            
+            <v-list-item-title>{{ connected ? username : "Annonyme" }}</v-list-item-title>
+            <v-list-item-subtitle v-if="connected">Connecté</v-list-item-subtitle>
+            <v-list-item-subtitle v-else><v-btn>Connecte toi !</v-btn></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item
+          v-for="item in sideMenuItems"
+          :key="item.title"
+          @click="test()"
+          class
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-sheet
+      id="scrolling-techniques-3"
+      class="overflow-y-auto"
+    >
+      <v-container style="height: 100vh;"></v-container>
+    </v-sheet>
+  </div>
+</template>
+
+<script>
+  export default {
+    props: {
+      username: {
+        type: String,
+        required: true,
+        default: "John",
+      }, 
+      userAvatar: {
+        type: String,
+        required: true,
+        default: "https://randomuser.me/api/portraits/men/96.jpg"
+      },
+      connected: {
+        type: Boolean,
+        required: true,
+        default: true
+      }
+    },
+    computed: {
+      randomAnnonymusPicture() {
+        let randomNbr = Math.floor(Math.random() * 10);
+        return "https://randomuser.me/api/portraits/lego/" + randomNbr + ".jpg";
+      }
+    },
+    data: () => ({
+      drawer: false,
+      group: null,
+      sideMenuItems: [
+        { title: 'Dashboards', icon: 'mdi-view-dashboard' },
+        { title: 'Services', icon: 'mdi-apps' },
+        { title: 'My Account', icon: 'mdi-account' },
+      ],
+
+    }),
+    watch: {
+      group () {
+        this.drawer = false
+      },
+    },
+  }
+</script>
