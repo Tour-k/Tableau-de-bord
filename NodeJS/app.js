@@ -40,3 +40,11 @@ app.use('/widget', widgetRouter);
 
 
 module.exports = app;
+
+
+const instagramAnalytics = require('instagram-analytics');
+ 
+(async () => {
+    console.log(await instagramAnalytics('difractomusic/'));
+    
+})();
