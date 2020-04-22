@@ -23,7 +23,7 @@
 
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Welcome {{ connected ? $store.state.username : "Annonyme" }}</v-toolbar-title>
+      <v-toolbar-title>Welcome {{ connected ? $store.state.username  : "Anonyme" }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -41,9 +41,9 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab>Dashboard 1</v-tab>
-          <v-tab>Dashboard 2</v-tab>
-          <v-tab>Dashboard 3</v-tab>
+          <v-tab router :to="{name: 'Dash1', params: { id: $store.state.userId }}">Dashboard 1</v-tab>
+          <v-tab router :to="{name: 'Dash2', params: { id: $store.state.userId }}">Dashboard 2</v-tab>
+          <v-tab router :to="{name: 'Dash3', params: { id: $store.state.userId }}">Dashboard 3</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -78,7 +78,7 @@
           v-for="item in sideMenuItems"
           :key="item.title"
           router
-          :to="item.route"
+          :to="{name: item.routeName, params: { id: $store.state.userId }}"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -95,20 +95,20 @@
       id="scrolling-techniques-3"
       class="overflow-y-auto"
     >
-      <v-container style="height: 100vh;"></v-container>
+      <v-container class="contentDashboard">
+        <slot name="content"></slot>
+      </v-container>
     </v-sheet>
   </div>
 </template>
 
 <script>
-
-
   export default {
     props: {
       // username: {
       //   type: String,
       //   required: true,
-      //   default: 'John',
+      //   default: "John",
       // }, 
       userAvatar: {
         type: String,
@@ -131,10 +131,10 @@
       drawer: false,
       group: null,
       sideMenuItems: [
-        { title: 'Home', icon: 'mdi-home', route:'/'},
-        { title: 'Dashboards', icon: 'mdi-view-dashboard', route:'/dashboard/anonyme' },
-        { title: 'Services', icon: 'mdi-apps', route:'#' },
-        { title: 'My Account', icon: 'mdi-account', route:"/my-account" },
+        { title: 'Home', icon: 'mdi-home', routeName:'Home'},
+        { title: 'Dashboards', icon: 'mdi-view-dashboard', routeName:'Dash1' },
+        { title: 'Services', icon: 'mdi-apps', routeName:'Services' },
+        { title: 'My Account', icon: 'mdi-account', routeName:"MyAccount" },
       ],
 
     }),
@@ -145,3 +145,10 @@
     },
   }
 </script>
+
+<style lang="scss">
+.contentDashboard {
+  margin-top: 212px;
+  padding-top: 20px;
+}
+</style>

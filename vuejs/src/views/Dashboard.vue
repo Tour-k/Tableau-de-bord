@@ -1,9 +1,10 @@
 <template>
   <div class="dashboard">
-
-    <NavBarDashboard></NavBarDashboard>
-    <h1 class="mt-60">Test  {{ user }}</h1> 
-    <p>{{$store.state.token}}</p>
+    <NavBarDashboard>
+      <template v-slot:content>
+        <router-view></router-view>
+      </template>
+    </NavBarDashboard>
   </div>
 </template>
 
@@ -29,7 +30,7 @@ export default {
       method: 'post',
       url: 'http://localhost:3000/api/auth/user',
       headers:{'Authorization' : `Basic ${store.state.token}`},
-      data: {email: 'K@gmail.com'}
+      data: {email: 'test7@gmail.com'}
     })
     .then(function (response) {
       console.log(response);

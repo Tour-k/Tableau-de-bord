@@ -5,8 +5,8 @@ const auth = require('../middleware/auth');
 const widgetCtrl = require('../controllers/widget');
 
 router.post('/', auth, widgetCtrl.setWidget);
-router.get('/:name', auth, widgetCtrl.getWidget);
-router.post('/:name', auth, widgetCtrl.updateWidget);
-router.delete('/:name', auth, widgetCtrl.deleteWidget);
+router.get('/:id', auth, widgetCtrl.getWidget);
+router.post('/:id', auth, widgetCtrl.updateWidget);
+router.delete('/:id', auth, widgetCtrl.deleteWidget);
 
 module.exports = router;

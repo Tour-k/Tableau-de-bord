@@ -18,7 +18,7 @@ exports.signup = (req, res) => {
   };
 
 exports.login = (req, res) => {
-    User.findOne({ email: req.body.email })
+    User.findOne({ id: req.body.id })
         .then(user => {
             if (!user) {
                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
@@ -28,7 +28,6 @@ exports.login = (req, res) => {
                     if (!valid) {
                         return res.status(401).json({ error: 'Mot de passe incorrect !' });
                     }
-                    
                     res.status(200).json({
                         userId: user._id,
                         username: user.username,
@@ -43,22 +42,21 @@ exports.login = (req, res) => {
         });
 };
 
-// TODO : check si le user qui fait la requête est bien logué 
-
+// TODO : changer le req.body.email par req.body.id
 exports.getUser = (req, res) => {
-    User.findOne({ email: req.body.email })
+    User.findOne({ id: req.body.email })
         .then(user => res.status(200).json(user))
         .catch(error => res.status(400).json({ error }));
 };
 
 exports.updateUser =(req, res) => {
-    User.updateOne({  email: req.body.email }, { ...req.body, email: req.params.email })
+    User.updateOne({  email: req.body.id }, { ...req.body, id: req.params.id })
         .then(() => res.status(200).json({ message: 'User modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };
 
 exports.deleteUser = (req, res) => {
-    User.deleteOne({ email: req.body.email })
+    User.deleteOne({ email: req.body.id })
         .then(() => { res.status(200).json({ message: 'User deleted!' }) })
         .catch((error) => { res.status(400).json({ error: error }) });
 };
