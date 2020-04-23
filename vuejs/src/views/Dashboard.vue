@@ -2,6 +2,7 @@
   <div class="dashboard">
 
     <NavBarDashboard></NavBarDashboard>
+    <Graph></Graph>
     <h1 class="mt-60">Test  {{ user }}</h1> 
     <p>{{$store.state.token}}</p>
   </div>
@@ -12,12 +13,14 @@
 // @ is an alias to /src
 import axios from 'axios';
 import NavBarDashboard from "@/components/Base/navbar-dashboard"
+import Graph from "@/components/widgets/graph"
 import store from '../store/index.js'
 
 export default {
   name: 'Dashboard',
   components: {
     NavBarDashboard,
+    Graph
   },
   data () {
     return {

@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const widgetRouter = require('./routes/widget');
+const apiRouter = require('./routes/api');
 const userRoutes = require('./routes/user');
 
 var app = express();
@@ -38,13 +39,7 @@ app.use('/', indexRouter);
 app.use('/api/auth', userRoutes);
 app.use('/widget', widgetRouter);
 
+app.use('/callExternAPI', apiRouter);
+
 
 module.exports = app;
-
-
-const instagramAnalytics = require('instagram-analytics');
- 
-(async () => {
-    console.log(await instagramAnalytics('difractomusic/'));
-    
-})();
