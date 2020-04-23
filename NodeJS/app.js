@@ -41,5 +41,4 @@ app.use('/widget', widgetRouter);
 
 app.use('/callExternAPI', apiExtRouter);
 
-
 module.exports = app;
