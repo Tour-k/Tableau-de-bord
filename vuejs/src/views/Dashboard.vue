@@ -13,12 +13,14 @@
 // @ is an alias to /src
 import axios from 'axios';
 import NavBarDashboard from "@/components/Base/navbar-dashboard"
+import Graph from "@/components/widgets/graph"
 import store from '../store/index.js'
 
 export default {
   name: 'Dashboard',
   components: {
     NavBarDashboard,
+    Graph
   },
   data () {
     return {
