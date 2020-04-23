@@ -18,7 +18,7 @@ exports.signup = (req, res) => {
   };
 
 exports.login = (req, res) => {
-    User.findOne({ id: req.body.id })
+    User.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
