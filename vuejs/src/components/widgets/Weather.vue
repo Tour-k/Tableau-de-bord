@@ -3,40 +3,16 @@
         <div class="contentMeteo">
             <v-container>
                 <v-card-title> 
-                    <h1>
+                    <h1 class="headerWeather">
                         Météo du jour
                     </h1>
-                     <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+                    <v-spacer></v-spacer>
+                     <v-icon @click.stop="drawer = !drawer" class="headerWeather">mdi-cog</v-icon>
                 </v-card-title>
-                <v-divider class="dividerMeteo"></v-divider>
-                <div class="input">
-                    <v-form>
-                        <v-row>
-                            <v-col>
-                                <v-text-field
-                                        label="city*"
-                                        placeholder="Entrez une ville"
-                                        outlined
-                                        v-model="city"
-                                        class="text-fieldMeteo"
-                                ></v-text-field>
-                            </v-col>
-                            <v-col>
-                                <v-btn
-                                        raised
-                                        @click="submitApi()"
-                                        class="btnMeteo"
-                                > submit
-                                </v-btn>
-                            </v-col>
-                        </v-row>
-                    </v-form>
-                </div>
                 <v-divider class="dividerMeteo"></v-divider>
             </v-container>
             <v-container class="info1Meteo">
                 <p class="nomVilleMeteo"> {{ info.name }} - {{ info.sys.country }} </p>
-                <v-divider class="dividerMeteo"></v-divider>
                 <v-row>
                     <v-col>
                         <v-img :src="getUrl()" class="iconMeteo" />
@@ -66,9 +42,39 @@
       v-model="drawer"
       absolute
       temporary
-      floating
+      width="100%"
+      class="pa-8"
     >
-      
+    <v-row>
+        <v-spacer></v-spacer>
+        <v-icon class="mr-5" @click="drawer= false">mdi-close</v-icon>
+    </v-row>
+      <h2 class="mb-8">Parametrage du widget météo</h2>
+
+      <p class="mb-0">Recevoir la météo de votre ville : </p>
+                    <v-form>
+                        <v-row>
+                            <v-col>
+                                <v-text-field
+                                        label="city*"
+                                        placeholder="Entrez une ville"
+                                        outlined
+                                        v-model="city"
+                                        class="text-fieldMeteo"
+                                ></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col>
+                                <v-btn
+                                    raised
+                                    @click="submitApi()"
+                                    class="btnMeteo"
+                                > submit
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                    </v-form>
     </v-navigation-drawer>
 
     </v-card>
@@ -106,6 +112,7 @@
                     .then(response => {
                         this.info = response.data;
                         this.dynamicUrl = response.data.weather[0].icon;
+                        this.drawer = false;
                     })
             }
         },
@@ -122,8 +129,8 @@
 
 <style scoped>
     .cardMeteo {
-        height: 500px;
-        width: 500px;
+        max-width: 500px; 
+        min-width: 400px; 
     }
     .contentMeteo{
         background: rgb(254,254,254);
@@ -156,5 +163,11 @@ background: radial-gradient(circle, rgba(254,254,254,1) 0%, rgba(246,232,216,1) 
     .dividerMeteo {
         background-color: #FFFFFF;
         width: 100%
+    }
+
+    .headerWeather{
+        color: white;
+        font-family: Roboto;
+        font-size: 20px;
     }
 </style>
