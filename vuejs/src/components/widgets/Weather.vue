@@ -82,6 +82,8 @@
 
 <script>
     import axios from 'axios';
+    import store from '../../store/index.js'
+
     export default {
         name: "weather",
         props: {
@@ -107,6 +109,24 @@
                 return 'http://api.openweathermap.org/data/2.5/weather?q='+ this.city +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
+                axios({
+                method: 'post',
+                //TODO : Rendre l'URL DYNAMIQUE :
+                url: 'http://localhost:3000/widget/setWidget',
+                headers:{'Authorization' : `Basic ${store.state.token}`},
+                data: {
+                    // TODO : recupérer le widget's name en dynamique
+                    name: 'weather',
+                    userId: store.state.userId, 
+                    //TODO : rendre les elements widgets dynamique 
+                    refresh: 3000,
+                    hidden: false,
+                    params: [this.city]
+                    }
+                })
+                .then(function (response) {
+                    console.log(response);
+                });
                 axios
                     .get(this.getApiUrl())
                     .then(response => {
@@ -123,6 +143,20 @@
                     this.info = response.data;
                     this.dynamicUrl = response.data.weather[0].icon;
                 })
+        },
+        beforeMount () {
+            axios({
+                method: 'post',
+                //TODO : Rendre l'URL DYNAMIQUE :
+                url: 'http://localhost:3000/widget/getWidget',
+                headers:{'Authorization' : `Basic ${store.state.token}`},
+                data: {
+                    userId: store.state.userId, 
+                    widgetName : this.name}
+            })
+            .then(function (response) {
+                console.log(response);
+            });
         },
     }
 </script>

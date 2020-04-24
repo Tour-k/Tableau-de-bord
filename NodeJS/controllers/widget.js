@@ -1,10 +1,14 @@
 const Widget = require('../models/widget');
 
 exports.setWidget = (req, res) => {
+    console.log('setWidget body : '+ req.body.params)
     const widget = new Widget({
         name: req.body.name,
+        userID: req.body.userId,
         refresh: req.body.refresh,
-        hidden: req.body.hidden
+        hidden: req.body.hidden, 
+        params: req.body.params
+
     });
     widget.save()
         .then(() => res.statue(201).json({ message: 'widget créé !'}))
