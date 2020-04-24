@@ -11,7 +11,7 @@
 
 <script>
 // @ is an alias to /src
-// import axios from 'axios';
+import axios from 'axios';
 import NavBarDashboard from "@/components/Base/navbar-dashboard"
 import store from '../store/index.js'
 
@@ -27,7 +27,7 @@ export default {
       user: {},
     }
   },
-  mounted () {
+  beforeMount () {
     axios({
       method: 'post',
       url: 'http://localhost:3000/api/auth/user',
@@ -38,12 +38,12 @@ export default {
       console.log(response);
     });
   },
-  beforeMount () {
+  mounted () {
     axios({
       method: 'post',
       url: 'http://localhost:3000/widget/getAllWidget',
       headers:{'Authorization' : `Basic ${store.state.token}`},
-      data: {email: 'test7@gmail.com'}
+      data: {id: store.state.userId}
     })
     .then(function (response) {
       console.log(response);

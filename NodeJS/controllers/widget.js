@@ -18,9 +18,11 @@ exports.getWidget = (req, res) => {
 };
 
 exports.getAllWidget = (req, res) => {
+    console.log('userId : ' + req.body.id)
     Widget.find({id: req.body.id})
 
         .then(widget => {
+            console.log('ALL WIDGETS :');
             console.log(widget);
             res.status(200).json(widget);
 
