@@ -13,14 +13,14 @@
 // @ is an alias to /src
 import axios from 'axios';
 import NavBarDashboard from "@/components/Base/navbar-dashboard"
-import Graph from "@/components/widgets/graph"
+// import Graph from "@/components/widgets/graph"
 import store from '../store/index.js'
 
 export default {
   name: 'Dashboard',
   components: {
     NavBarDashboard,
-    Graph
+    // Graph
   },
   data () {
     return {
@@ -37,6 +37,21 @@ export default {
     .then(function (response) {
       console.log(response);
     });
+  },
+  beforeMount () {
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/widget/getAllWidget',
+      headers:{'Authorization' : `Basic ${store.state.token}`},
+      data: {email: 'test7@gmail.com'}
+    })
+    .then(function (response) {
+      console.log(response);
+    });
   }
+    
+    // TODO : Envoyer une requete pour charger le dashboard par défault
+
+  
 }
 </script>

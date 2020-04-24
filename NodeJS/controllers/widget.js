@@ -17,6 +17,20 @@ exports.getWidget = (req, res) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+exports.getAllWidget = (req, res) => {
+    Widget.find({id: req.body.id})
+
+        .then(widget => {
+            console.log(widget);
+            res.status(200).json(widget);
+
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(400).json(error);
+        })
+}
+
 exports.updateWidget = (req, res) => {
     Widget.updateOne({ name: req.params.name }, { ...req.body, name: req.params.name })
         .then(() => res.status(200).json({ message: 'Widget modifié !'}))
