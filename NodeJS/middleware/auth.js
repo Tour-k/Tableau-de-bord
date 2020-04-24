@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
         if (req.body.userId && req.body.userId !== userId) {
             throw 'Invalid user ID';
         }
-        next();
+        next(userId);
     } catch {
         res.status(401).json({
             error: new Error('Invalid request!')

@@ -28,7 +28,7 @@
                     v-for="(item, index) in navItems"
                     :key="index"
                     router
-                    :to="{name: item.routeName, params: { id: $store.state.userId }}"
+                    :to="{name: item.routeName, params: {id: $store.state.userId}}"
                     >
                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item>
@@ -45,7 +45,7 @@
                 <v-btn text v-for="navItem in navItems" :key="navItem.id" 
                 :class="$style.navLink"
                 router
-                :to="{name: navItem.routeName, params: { id: $store.state.userId }}">
+                :to="{name: navItem.routeName, params: {id: $store.state.userId}}">
                     {{navItem.title}}
                 </v-btn>
                 <PopupConnexion></PopupConnexion>

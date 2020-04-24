@@ -10,6 +10,7 @@ exports.signup = (req, res) => {
           password: hash,
           username: req.body.username
         });
+    
         user.save()
           .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
           .catch(error => res.status(400).json({ error }));
@@ -20,6 +21,7 @@ exports.signup = (req, res) => {
 exports.login = (req, res) => {
     User.findOne({ email: req.body.email })
         .then(user => {
+            console.log(user)
             if (!user) {
                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
             }
@@ -31,6 +33,7 @@ exports.login = (req, res) => {
                     res.status(200).json({
                         userId: user._id,
                         username: user.username,
+                        email: user.email,
                         token: jwt.sign(
                             { userId: user._id },
                             'RANDOM_TOKEN_SECRET',
@@ -42,21 +45,20 @@ exports.login = (req, res) => {
         });
 };
 
-// TODO : changer le req.body.email par req.body.id
 exports.getUser = (req, res) => {
-    User.findOne({ id: req.body.email })
+    User.findOne({ id: req.body.id })
         .then(user => res.status(200).json(user))
         .catch(error => res.status(400).json({ error }));
 };
 
 exports.updateUser =(req, res) => {
-    User.updateOne({  email: req.body.id }, { ...req.body, id: req.params.id })
+    User.updateOne({ id: req.body.id }, { ...req.body, id: req.params.id })
         .then(() => res.status(200).json({ message: 'User modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };
 
 exports.deleteUser = (req, res) => {
-    User.deleteOne({ email: req.body.id })
+    User.deleteOne({ id: req.body.id })
         .then(() => { res.status(200).json({ message: 'User deleted!' }) })
         .catch((error) => { res.status(400).json({ error: error }) });
 };

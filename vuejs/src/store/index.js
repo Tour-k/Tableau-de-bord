@@ -11,6 +11,7 @@ const store = new Vuex.Store({
   },
   state: {
     username : '', 
+    email: '',
     token: '',
     userId: ''
   },
@@ -20,6 +21,9 @@ const store = new Vuex.Store({
     }, 
     INIT_TOKEN(state, payload){
       state.token = payload
+    },
+    INIT_EMAIL(state, payload){
+      state.email = payload
     },
     INIT_USERID(state, payload){
       state.userId = payload
@@ -31,6 +35,9 @@ const store = new Vuex.Store({
     },
     setToken(context, token){
       context.commit('INIT_TOKEN', token)
+    },
+    setEmail(context, email){
+      context.commit('INIT_EMAIL', email)
     },
     setUserId(context, userId){
       context.commit('INIT_USERID', userId)

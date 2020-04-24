@@ -41,9 +41,9 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab router :to="{name: 'Dash1', params: { id: $store.state.userId }}">Dashboard 1</v-tab>
-          <v-tab router :to="{name: 'Dash2', params: { id: $store.state.userId }}">Dashboard 2</v-tab>
-          <v-tab router :to="{name: 'Dash3', params: { id: $store.state.userId }}">Dashboard 3</v-tab>
+          <v-tab router :to="{name: 'Dash1', params: {id: $store.state.userId}}">Dashboard 1</v-tab>
+          <v-tab router :to="{name: 'Dash2', params: {id: $store.state.userId}}">Dashboard 2</v-tab>
+          <v-tab router :to="{name: 'Dash3', params: {id: $store.state.userId}}">Dashboard 3</v-tab>
         </v-tabs>
       </template>
     </v-app-bar>
@@ -78,7 +78,7 @@
           v-for="item in sideMenuItems"
           :key="item.title"
           router
-          :to="{name: item.routeName, params: { id: $store.state.userId }}"
+          :to="{name: item.routeName}"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -86,6 +86,17 @@
 
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        
+        <v-list-item           
+          router
+          :to="{name: 'Dash1', params:{id: $store.state.userId}}">
+          <v-list-item-icon>
+            <v-icon>mdi-view-dashboard</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -132,7 +143,6 @@
       group: null,
       sideMenuItems: [
         { title: 'Home', icon: 'mdi-home', routeName:'Home'},
-        { title: 'Dashboards', icon: 'mdi-view-dashboard', routeName:'Dash1' },
         { title: 'Services', icon: 'mdi-apps', routeName:'Services' },
         { title: 'My Account', icon: 'mdi-account', routeName:"MyAccount" },
       ],

@@ -69,16 +69,29 @@ import VueCookie from 'vue-cookies';
         })
         .then(response => {
           console.log(response.data);
-          this.$store.dispatch('setUsername', response.data.username)
-          this.$store.dispatch('setToken', response.data.token)
-          this.$store.dispatch('setUserId', response.data.userId)
-          VueCookie.set('userId', response.data.userId);
-          VueCookie.set('token', response.data.token)
-          this.$router.push('Dashboard/' +response.data.userId);
+          this.sendConnectReq();
         })
         .catch(e => {
           this.errors.push(e)
           this.errorStatus = true;
+        })
+      },
+      sendConnectReq() {
+        axios.post('http://localhost:3000/api/auth/login',  {
+          email: this.email,
+          password: this.password
+        })
+        .then(response => {
+          console.log(response.data);
+          this.$store.dispatch('setUsername', response.data.username);
+          this.$store.dispatch('setToken', response.data.token);
+          this.$store.dispatch('setUserId', response.data.userId);
+          VueCookie.set('userId', response.data.userId);
+          VueCookie.set('token', response.data.token);
+          this.$router.push({name: 'Dash1', params: {id: response.data.userId}});
+        })
+        .catch(e => {
+          this.errors.push(e)
         })
       }
     }
