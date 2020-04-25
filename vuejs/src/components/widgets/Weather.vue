@@ -152,10 +152,11 @@
                 headers:{'Authorization' : `Basic ${store.state.token}`},
                 data: {
                     userId: store.state.userId, 
-                    widgetName : this.name}
+                    name : 'weather'}
             })
             .then(function (response) {
-                console.log(response);
+                console.log(response.data.params[0]);
+                this.city = response.data.params[0];
             });
         },
     }
