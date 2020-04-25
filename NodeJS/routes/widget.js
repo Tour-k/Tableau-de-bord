@@ -10,5 +10,6 @@ router.post('/getWidget',  widgetCtrl.getWidget);
 router.get('/:id', auth, widgetCtrl.getWidget);
 router.post('/:id', auth, widgetCtrl.updateWidget);
 router.delete('/:id', auth, widgetCtrl.deleteWidget);
+router.post('/getWidgetsByDashboardId', widgetCtrl.getWidgetsByDashboardId)
 
 module.exports = router;

@@ -68,3 +68,15 @@ exports.deleteWidget = (req, res) => {
         .then(() => { res.status(200).json({ message: 'Deleted!' }) })
         .catch((error) => { res.status(400).json({ error: error }) });
 };
+
+
+exports.getWidgetsByDashboardId = (req, res) => {
+    Widget.find({userId = req.body.userId, numDashboard = req.body.numDashboard})
+        .then((widgets) => {
+            console.log(widgets);
+            res.status(200).json(widgets)
+        })
+        .catch((erreur)=>{
+            res.status(400).json(erreur)
+        })
+}
