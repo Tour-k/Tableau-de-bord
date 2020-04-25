@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 const widgetCtrl = require('../controllers/widget');
 
 
-router.post('/getAllWidget', widgetCtrl.getAllWidget);
+// router.post('/getAllWidget', widgetCtrl.getAllWidget);
 router.post('/getWidget',  widgetCtrl.getWidget);
 router.post('/getWidgetsByDashboardId', widgetCtrl.getWidgetsByDashboardId);
 

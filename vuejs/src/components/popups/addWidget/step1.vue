@@ -23,9 +23,11 @@
 <script>
 import { mapState } from 'vuex'
   export default {
-    data () {
-      return {
-        serviceSelected: null,
+    props: {
+      serviceSelected: {
+        type: Number,
+        required: true,
+        default: null
       }
     },
     methods: {

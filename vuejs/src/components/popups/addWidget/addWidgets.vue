@@ -29,7 +29,7 @@
 
     <v-stepper-items>
       <v-stepper-content step="1" >
-        <Step1 v-on:update-service="updateService"></Step1>
+        <Step1 :serviceSelected="serviceId" v-on:update-service="updateService"></Step1>
         <v-btn
           color="primary"
           @click="e1 = 2"
@@ -59,6 +59,7 @@
         <v-btn
           color="primary"
           @click="setWidget()"
+          :disabled="dashboardId == null"
         >
           Sauvegarder
         </v-btn>
@@ -94,15 +95,21 @@ import { mapState } from 'vuex'
       errors:[]
     }),
     methods: {
-      // TODO : ajouter axios et la route pour set le widget dans la bdd
+      
       setWidget() {
         console.log("setWidget");
         console.log("Service id : " + this.serviceId);
         console.log("Widget id : " + this.widgetId);
         console.log("Dashboard id : " + this.dashboardId);
         console.log("User Id : " + this.$store.state.userId);
+        // TODO : ajouter axios et la route pour set le widget dans la bdd
 
+        // TODO .then : 
         this.dialog = false;
+        this.dashboardId =null;
+        this.serviceId = null;
+        this.widgetId = null;
+        this.e1 = 1;
         this.$emit('close-side-menu');
       },
       updateService(e){
@@ -115,6 +122,7 @@ import { mapState } from 'vuex'
         this.dashboardId = e;
       },
       cancelStep1() {
+          this.serviceId = null;
           this.dialog = false;
       },
       cancelStep2() {

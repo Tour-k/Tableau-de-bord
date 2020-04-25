@@ -11,8 +11,8 @@
 
 <script>
 // @ is an alias to /src
-import axios from 'axios';
-import store from '../store/index.js'
+// import axios from 'axios';
+// import store from '../store/index.js'
 import NavBarDashboard from "@/components/Base/navbar-dashboard"
 
 
@@ -26,17 +26,6 @@ export default {
     return {
       user: {},
     }
-  },
-  beforeMount () {
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/api/auth/user',
-      headers:{'Authorization' : `Basic ${store.state.token}`},
-      data: {email: 'test7@gmail.com'}
-    })
-    .then(function (response) {
-      console.log(response);
-    });
   },
   
     // TODO : Kévin => Envoyer une requete pour charger le dashboard par défault

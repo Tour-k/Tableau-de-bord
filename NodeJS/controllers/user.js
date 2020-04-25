@@ -46,7 +46,7 @@ exports.login = (req, res) => {
 };
 
 exports.getUser = (req, res) => {
-    User.findOne({ id: req.body.id })
+    User.findOne({ email: req.body.email })
         .then(user => res.status(200).json(user))
         .catch(error => res.status(400).json({ error }));
 };
