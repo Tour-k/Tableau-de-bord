@@ -101,7 +101,7 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
-              <AddWidgetPopup>
+              <AddWidgetPopup v-on:close-side-menu="closeSideMenu">
               </AddWidgetPopup>
             </v-list-item-title>
           </v-list-item-content>
@@ -163,6 +163,11 @@ import AddWidgetPopup from '@/components/popups/addWidget/addWidgets'
         this.drawer = false
       },
     },
+    methods: {
+      closeSideMenu() {
+        this.drawer = false
+      }
+    }
   }
 </script>
 
