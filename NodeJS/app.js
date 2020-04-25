@@ -13,7 +13,7 @@ const userRoutes = require('./routes/user');
 
 var app = express();
 
-mongoose.connect('mongodb+srv://Manuel:pg8aWRsoysPU1r7r@cluster0-8oeuo.mongodb.net/test',
+mongoose.connect('mongodb+srv://adminIRC:fnmM8ulX9Si9Zzj1@ircdatabase-vkyrn.mongodb.net/test?retryWrites=true&w=majority',
     { useNewUrlParser: true,
             useFindAndModify: false,
             useCreateIndex: true,

@@ -11,47 +11,20 @@
 
 <script>
 // @ is an alias to /src
-import axios from 'axios';
+// import axios from 'axios';
 import NavBarDashboard from "@/components/Base/navbar-dashboard"
-import store from '../store/index.js'
-
+// import store from '../store/index.js'
 
 export default {
   name: 'Dashboard',
   components: {
     NavBarDashboard,
-
   },
   data () {
     return {
       user: {},
     }
   },
-  beforeMount () {
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/api/auth/user',
-      headers:{'Authorization' : `Basic ${store.state.token}`},
-      data: {email: 'test7@gmail.com'}
-    })
-    .then(function (response) {
-      console.log(response);
-    });
-  },
-  mounted () {
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/widget/getAllWidget',
-      headers:{'Authorization' : `Basic ${store.state.token}`},
-      data: {id: store.state.userId}
-    })
-    .then(function (response) {
-      console.log(response);
-    });
-  }
-    
-    // TODO : Envoyer une requete pour charger le dashboard par défault
-
   // mounted () {
   //   axios({
   //     method: 'post',
@@ -63,6 +36,5 @@ export default {
   //     console.log(response.data);
   //   });
   // }
-
 }
 </script>
