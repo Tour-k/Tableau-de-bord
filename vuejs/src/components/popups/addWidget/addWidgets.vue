@@ -78,8 +78,11 @@
               Félicitation 
             </v-card-title>
             <v-card-text>
-              <v-img src="@/assets/bravo.jpg" ></v-img>
+              Vous avez terminé !   
             </v-card-text>
+            <v-card-action>
+              <v-btn>Ajouter un autre widget ?</v-btn>
+            </v-card-action>
           </v-card>
         </template>
         <v-btn
