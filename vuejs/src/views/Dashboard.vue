@@ -12,8 +12,9 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios';
-import NavBarDashboard from "@/components/Base/navbar-dashboard"
 import store from '../store/index.js'
+import NavBarDashboard from "@/components/Base/navbar-dashboard"
+
 
 
 export default {
@@ -38,19 +39,10 @@ export default {
       console.log(response);
     });
   },
-  mounted () {
-    axios({
-      method: 'post',
-      url: 'http://localhost:3000/widget/getAllWidget',
-      headers:{'Authorization' : `Basic ${store.state.token}`},
-      data: {id: store.state.userId}
-    })
-    .then(function (response) {
-      console.log(response);
-    });
-  }
-    
-    // TODO : Envoyer une requete pour charger le dashboard par défault
+  
+    // TODO : Kévin => Envoyer une requete pour charger le dashboard par défault
+   
+
 
   // mounted () {
   //   axios({
