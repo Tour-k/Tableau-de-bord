@@ -106,20 +106,16 @@
                 return "http://openweathermap.org/img/wn/"+ this.dynamicUrl +".png";
             },
             getApiUrl() {
-                console.log('this.city:'+ this.city)
                 return 'http://api.openweathermap.org/data/2.5/weather?q='+ this.city +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
                 axios({
                 method: 'post',
-                //TODO : Rendre l'URL DYNAMIQUE :
                 url: 'http://localhost:3000/widget/setWidget',
                 headers:{'Authorization' : `Basic ${store.state.token}`},
                 data: {
-                    // TODO : recupérer le widget's name en dynamique
                     name: 'weather',
                     userId: store.state.userId, 
-                    //TODO : rendre les elements widgets dynamique 
                     refresh: 3000,
                     hidden: false,
                     params: [this.city]
@@ -156,8 +152,9 @@
             })
             .then(function (response) {
                 console.log('response getWidget: '+response.data.params[0]);
-                this.city = response.data.params[0];
-                console.log('this city: '+this.city)
+                console.log('this city: '+ this.$el.city);
+                // vm.$set(this.someObject, 'city', response.data.params[0]);
+                
                 axios
                     .get(this.getApiUrl())
                     .then(response => {
