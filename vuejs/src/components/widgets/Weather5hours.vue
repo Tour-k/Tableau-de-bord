@@ -163,7 +163,7 @@
 <style scoped>
     .cardMeteo {
         max-width: 1920px; 
-        min-width: 800px; 
+        min-width: 400px; 
         background: rgb(254,254,254);
         background: radial-gradient(circle, rgba(254,254,254,1) 0%, rgba(246,232,216,1) 21%, rgba(89,170,249,1) 100%);
         color: #252525;

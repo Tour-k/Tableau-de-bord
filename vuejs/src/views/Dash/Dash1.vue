@@ -1,11 +1,12 @@
 <template>
   <div>
     <h1>Dash 1 </h1>
+    <Widgets></Widgets>
   </div>
 </template>
 
 <script>
-// import Insta from "@/components/widgets/Instagram"
+ import Widgets from "@/components/widgets/widgetContainer"
 // import Weather from "@/components/widgets/Weather"
 // import Weather5hours from "@/components/widgets/Weather5hours"
 
@@ -14,6 +15,7 @@ import store from '../../store/index.js'
 
 export default {
   components: {
+    Widgets
     // Insta,
     // Weather,
     // Weather5hours

@@ -82,8 +82,6 @@
 
 <script>
     import axios from 'axios';
-    import store from '../../store/index.js'
-
     export default {
         name: "weather",
         props: {
@@ -115,10 +113,10 @@
                 axios({
                 method: 'post',
                 url: 'http://localhost:3000/widget/setWidget',
-                headers:{'Authorization' : `Basic ${store.state.token}`},
+                headers:{'Authorization' : `Basic {$store.state.token}`},
                 data: {
                     name: 'weather',
-                    userId: store.state.userId, 
+                    userId: this.$store.state.userId, 
                     refresh: 3000,
                     hidden: false,
                     params: [this.city]
@@ -127,30 +125,12 @@
                 .then(function (response) {
                     console.log(response);
                 });
-                axios
-                    .get(this.getApiUrl())
-                    .then(response => {
-                        this.info = response.data;
-                        this.dynamicUrl = response.data.weather[0].icon;
-                        this.drawer = false;
-                    })
-            }
-        },
-        // mounted () {
-        //     axios
-        //         .get(this.getApiUrl())
-        //         .then(response => {
-        //             this.info = response.data;
-        //             this.dynamicUrl = response.data.weather[0].icon;
-        //         })
-        // },
-        mounted () {
             axios({
                 method: 'post',
                 url: 'http://localhost:3000/widget/getWidget',
-                headers:{'Authorization' : `Basic ${store.state.token}`},
+                headers:{'Authorization' : `Basic {store.state.token}`},
                 data: {
-                    userId: store.state.userId, 
+                    userId: this.$store.state.userId, 
                     name : 'weather'}
             })
             .then(function (response) {
@@ -165,15 +145,16 @@
                         this.dynamicUrl = response.data.weather[0].icon;
                         this.drawer = false;
                     })
-            });
-        },
+                });
+            },
+        }
     }
 </script>
 
 <style scoped>
     .cardMeteo {
-        max-width: 500px; 
-        min-width: 400px; 
+        max-width: 1920px; 
+        min-width: 800px; 
         color: #252525!important;
         font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 

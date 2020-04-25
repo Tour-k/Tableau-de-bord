@@ -1,7 +1,6 @@
 const Widget = require('../models/widget');
 
 exports.setWidget = (req, res) => {
-    
     const widget = new Widget({
         name : req.body.name,
         userId: req.body.userId,
@@ -11,8 +10,6 @@ exports.setWidget = (req, res) => {
         numDashboard: req.body.numDashboard,
         serviceId : req.body.serviceId,
         widgetId: req.body.widgetId
-
-
     });
     widget.save()
         .then(() => res.status(201).json({ message: 'widget créé !'}))
@@ -23,31 +20,13 @@ exports.setWidget = (req, res) => {
 };
 
 exports.getWidget = (req, res) => {
-    Widget.findOne({ name: req.body.name, userId: req.body.userId })
-        .then(widget => {
-            res.status(200).json(widget)
-        })
+    Widget.findOne({ _id: req.body.id })
+        .then(user => res.status(200).json(user))
         .catch(error => res.status(400).json({ error }));
 };
 
-exports.getAllWidget = (req, res) => {
-    console.log('userId : ' + req.body.id)
-    Widget.find({id: req.body.id})
-
-        .then(widget => {
-            console.log('ALL WIDGETS :');
-            console.log(widget);
-            res.status(200).json(widget);
-
-        })
-        .catch(error => {
-            console.log(error);
-            res.status(400).json(error);
-        })
-}
-
 exports.updateWidget = (req, res) => {
-    Widget.updateOne({ name: req.params.name }, { ...req.body, name: req.params.name })
+    Widget.updateOne({ _id: req.params.id }, { ...req.body, name: req.params.name })
         .then(() => res.status(200).json({ message: 'Widget modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };

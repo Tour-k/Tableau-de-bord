@@ -21,7 +21,6 @@ export default {
   name: 'Dashboard',
   components: {
     NavBarDashboard,
-
   },
   data () {
     return {
@@ -41,9 +40,6 @@ export default {
   },
   
     // TODO : Kévin => Envoyer une requete pour charger le dashboard par défault
-   
-
-
   // mounted () {
   //   axios({
   //     method: 'post',
@@ -55,6 +51,5 @@ export default {
   //     console.log(response.data);
   //   });
   // }
-
 }
 </script>
