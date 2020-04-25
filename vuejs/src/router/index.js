@@ -9,6 +9,8 @@ import Blog from '../views/Blog.vue'
 import Service from '@/views/Service.vue'
 import MyAccount from '../views/My-Account.vue'
 import Weather from "../components/widgets/Weather";
+import Weather5hours from "../components/widgets/Weather5hours";
+import WeatherDays from "../components/widgets/WeatherDays";
 
 
 Vue.use(VueRouter)
@@ -53,10 +55,21 @@ Vue.use(VueRouter)
   name:'MyAccount',
   component: MyAccount
   },
+
   {
     path: '/services',
     name:'Services',
     component: Service
+  },
+  {
+    path: '/weather5hours',
+    name:'Weather5hours',
+    component: Weather5hours
+  },
+  {
+    path: '/weatherDays',
+    name: 'WeatherDays',
+    component: WeatherDays
   }
 
 ]

@@ -88,7 +88,6 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        
         <v-list-item           
           router
           :to="{name: 'Dash1', params:{id: $store.state.userId}}">
@@ -97,6 +96,14 @@
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>Dashboard</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
+              <AddWidgetPopup>
+              </AddWidgetPopup>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -114,7 +121,11 @@
 </template>
 
 <script>
+import AddWidgetPopup from '@/components/popups/addWidget/addWidgets'
   export default {
+    components: {
+      AddWidgetPopup
+    },
     props: {
       // username: {
       //   type: String,
@@ -143,7 +154,6 @@
       group: null,
       sideMenuItems: [
         { title: 'Home', icon: 'mdi-home', routeName:'Home'},
-        { title: 'Services', icon: 'mdi-apps', routeName:'Services' },
         { title: 'My Account', icon: 'mdi-account', routeName:"MyAccount" },
       ],
 
