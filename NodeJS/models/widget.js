@@ -6,7 +6,9 @@ const widgetSchema = mongoose.Schema({
     refresh: { type: Number, default: 3000, required: false },
     hidden: { type: Boolean, default: false, required: false },
     params: { type: Array, required: false}, 
-    numDashboard: {type: Number, default: 0, required:false}
+    numDashboard: {type: Number, default: 0, required:false},
+    serviceId: {type: Number, requided:true}, 
+    widgetId: {type: Number, required:true}
 
 });
 

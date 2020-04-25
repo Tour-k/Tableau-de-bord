@@ -49,7 +49,7 @@ export default {
       }
     })
     .then(function (response) {
-      console.log(response);
+      console.log( 'response widgets Dashboard'+ JSON.stringify(response.data));
     });
   }
     
