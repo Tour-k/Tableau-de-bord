@@ -41,16 +41,21 @@ export default {
   mounted () {
     axios({
       method: 'post',
-      url: 'http://localhost:3000/widget/getAllWidget',
+      url: 'http://localhost:3000/widget/getWidgetsByDashboardId',
       headers:{'Authorization' : `Basic ${store.state.token}`},
-      data: {id: store.state.userId}
+      data: {
+        userId: store.state.userId, 
+        numDashboard: 0
+      }
     })
     .then(function (response) {
       console.log(response);
     });
   }
     
-    // TODO : Envoyer une requete pour charger le dashboard par défault
+    // TODO : Kévin => Envoyer une requete pour charger le dashboard par défault
+   
+
 
   // mounted () {
   //   axios({
