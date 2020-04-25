@@ -2,7 +2,7 @@
   <draggable v-model="myArray">
     <transition-group>
         <div v-for="element in myArray" :key="element.id">
-            <widget :widgetTitle="element.name"></widget>
+            <widget :serviceId="element.serviceId" :widgetType="element.widgetType"></widget>
         </div>
     </transition-group>
   </draggable>
@@ -19,16 +19,16 @@ export default {
     return {
       myArray: [
         {
-          id: 0, name: "widget1"
+          id: 0, serviceId: 0, widgetType: 1
         },
         {
-          id: 1, name: "widget2"
+          id: 1, serviceId: 1, widgetType: 0
         },
         {
-          id: 2, name: "widget3"
+          id: 2, serviceId: 2, widgetType: 0
         },
         {
-          id: 1, name: "widget4"
+          id: 0, serviceId: 0, widgetType: 0
         },
       ]
     }

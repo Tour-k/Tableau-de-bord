@@ -1,6 +1,6 @@
 <template>
-  <v-card raised tile    
-    class="mx-auto">
+  <v-card raised tile class="mb-5"  
+  >
     <v-card-title class="pa-0 cardTitleWidgetContainer">
       <v-spacer></v-spacer>
         <DeleteWidget :widgetId="widgetId"></DeleteWidget>

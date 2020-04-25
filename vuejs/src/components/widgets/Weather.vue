@@ -132,8 +132,8 @@
 
 <style scoped>
     .cardMeteo {
-        max-width: 500px; 
-        min-width: 400px; 
+        max-width: 1920px; 
+        min-width: 800px; 
         color: #252525!important;
         font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
