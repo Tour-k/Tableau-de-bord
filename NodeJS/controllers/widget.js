@@ -71,7 +71,7 @@ exports.deleteWidget = (req, res) => {
 
 
 exports.getWidgetsByDashboardId = (req, res) => {
-    Widget.find({userId = req.body.userId, numDashboard = req.body.numDashboard})
+    Widget.find({userId : req.body.userId, numDashboard : req.body.numDashboard})
         .then((widgets) => {
             console.log(widgets);
             res.status(200).json(widgets)
