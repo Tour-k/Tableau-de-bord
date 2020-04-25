@@ -171,14 +171,14 @@
 
 <style scoped>
     .cardMeteo {
-        height: 400px;
-        width: 900px;
+        max-width: 1920px;
+        min-width: 800px;
+        background: rgb(254,254,254);
+        background: radial-gradient(circle, rgba(254,254,254,1) 0%, rgba(246,232,216,1) 21%, rgba(89,170,249,1) 100%);
+        color: #252525;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    .contentMeteo{
-        background-color: #6B6B6B;
-        text-align: center;
-        color: #FFFFFF;
-    }
+
     .dividerMeteo {
         background-color: #FFFFFF;
         width: 100%
@@ -186,5 +186,10 @@
     .nomVilleMeteo {
         font-size: 35px;
         text-align: center;
+    }
+    .headerWeather{
+        color: white;
+        font-family: Roboto;
+        font-size: 20px;
     }
 </style>

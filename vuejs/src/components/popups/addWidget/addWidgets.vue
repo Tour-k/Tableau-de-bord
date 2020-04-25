@@ -2,7 +2,7 @@
   <div class="d-inline">
     <v-dialog v-model="dialog" persistent max-width="1020px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" v-on="on" :class="$style.btnCallToAction">Ajouter un widget</v-btn>
+        <v-btn color="primary" v-on="on" :class="$style.btnCallToAction" :disabled="$store.state.userId == ''">Ajouter un widget</v-btn>
       </template>
       <v-card>
       <v-row class="d-flex justify-end mr-3 pr-0 pt-3">
@@ -23,11 +23,9 @@
 
       <v-divider></v-divider>
 
-      <v-stepper-step  :complete="e1 > 3" step="3">Paramétrer mon widget</v-stepper-step>
+      <v-stepper-step  :complete="e1 > 3" step="3">Choisir un dashboard</v-stepper-step>
       <v-divider></v-divider>
-
-      <v-stepper-step step="4">Félicitations ! </v-stepper-step>
-    </v-stepper-header>
+     </v-stepper-header>
 
     <v-stepper-items>
       <v-stepper-content step="1" >
@@ -57,43 +55,16 @@
       </v-stepper-content>
 
       <v-stepper-content step="3">
-        <Step3 :serviceId="serviceId" :widgetId="widgetId" v-on:update-params="updateParams"></Step3>
+        <Step3 :dashboardtSelected="dashboardId" v-on:update-dashboard-id="updateDashboardId"></Step3>
         <v-btn
           color="primary"
-          @click="e1 = 4"
-        >
-          Continue
-        </v-btn>
-
-        <v-btn text @click="cancelStep3()">Cancel</v-btn>
-      </v-stepper-content>
-      <v-stepper-content step="4">
-        <template>   
-          <v-card
-            class="mb-12"
-            color="grey lighten-5"
-            height="200px"
-          >
-            <v-card-title>
-              Félicitation 
-            </v-card-title>
-            <v-card-text>
-              Vous avez terminé !   
-            </v-card-text>
-            <v-card-action>
-              <v-btn>Ajouter un autre widget ?</v-btn>
-            </v-card-action>
-          </v-card>
-        </template>
-        <v-btn
-          color="primary"
+          @click="setWidget()"
         >
           Sauvegarder
         </v-btn>
 
-        <v-btn text @click="cancelStep4()">Cancel</v-btn>
+        <v-btn text @click="cancelStep3()">Cancel</v-btn>
       </v-stepper-content>
-
     </v-stepper-items>
   </v-stepper>
       </v-card>
@@ -118,12 +89,21 @@ import { mapState } from 'vuex'
       e1: 1,
       serviceId : null,
       widgetId: null,
+      dashboardId: null,
       params: [],
       errors:[]
     }),
     methods: {
-      sendReq() {
-        console.log("TestSendReq");
+      // TODO : ajouter axios et la route pour set le widget dans la bdd
+      setWidget() {
+        console.log("setWidget");
+        console.log("Service id : " + this.serviceId);
+        console.log("Widget id : " + this.widgetId);
+        console.log("Dashboard id : " + this.dashboardId);
+        console.log("User Id : " + this.$store.state.userId);
+
+        this.dialog = false;
+        this.$emit('close-side-menu');
       },
       updateService(e){
         this.serviceId = e;
@@ -131,8 +111,8 @@ import { mapState } from 'vuex'
       updateWidget(e){
         this.widgetId = e;
       },
-      updateParams(e) {
-        this.params.push(e);
+      updateDashboardId(e) {
+        this.dashboardId = e;
       },
       cancelStep1() {
           this.dialog = false;
@@ -143,10 +123,7 @@ import { mapState } from 'vuex'
       },
       cancelStep3() {
           this.e1 = 2;
-          this.params = null;
-      },
-      cancelStep4() {
-          this.e1 = 3;
+          this.dashboardId = null;
       },
     },
     computed: {
