@@ -18,20 +18,20 @@
                         <v-img :src="getUrl()" class="iconMeteo" />
                     </v-col>
                     <v-col class=" info2Meteo">
-                        <v-row>
-                            <p>{{ info.weather[0].description }}</p>
+                        <v-row class="text-capitalize">
+                            <p><b>{{ info.weather[0].description }}</b></p>
                         </v-row>
                         <v-row>
-                            <p> {{ info.main.temp }} ° </p>
+                            <p> Température : <b>{{ roundTemp(info.main.temp) }}°C</b> </p>
                         </v-row>
                         <v-row>
-                            <p> Max: {{ info.main.temp_max }}° </p>
+                            <p> Min: <b>{{ roundTemp(info.main.temp_min) }}°C</b> </p>
                         </v-row>
                         <v-row>
-                            <p> Min: {{ info.main.temp_min }} </p>
+                            <p> Max: <b>{{ roundTemp(info.main.temp_max) }}°C</b>  </p>
                         </v-row>
                         <v-row>
-                            <p> {{ info.main.pressure }} hPa </p>
+                            <p>Pression: <b>{{ info.main.pressure }}hPa</b> </p>
                         </v-row>
                     </v-col>
                 </v-row>
@@ -102,6 +102,9 @@
           }
         },
         methods: {
+            roundTemp(temp) {
+                return Math.round(parseInt(temp));
+            },
             getUrl() {
                 return "http://openweathermap.org/img/wn/"+ this.dynamicUrl +".png";
             },
@@ -166,13 +169,14 @@
     .cardMeteo {
         max-width: 500px; 
         min-width: 400px; 
+        color: #252525!important;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
     }
     .contentMeteo{
         background: rgb(254,254,254);
-background: radial-gradient(circle, rgba(254,254,254,1) 0%, rgba(246,232,216,1) 21%, rgba(89,170,249,1) 100%);
+        background: radial-gradient(circle, rgba(254,254,254,1) 0%, rgba(246,232,216,1) 21%, rgba(89,170,249,1) 100%);
         text-align: center;
-        color: #404040;
-        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
     .btnMeteo {
         position: relative;
