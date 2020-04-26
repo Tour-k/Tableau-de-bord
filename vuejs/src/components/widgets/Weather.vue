@@ -85,8 +85,17 @@
     export default {
         name: "weather",
         props: {
-            test: String,
-            widgetId: String
+            widgetId: { 
+                type: String,
+                required: true,
+            },
+            params: {
+                type: Array,
+                required: true,
+                default: function () {
+                    return ["Paris"]
+                }
+            },
         },
         components: {
 
@@ -108,7 +117,7 @@
                 return "http://openweathermap.org/img/wn/"+ this.dynamicUrl +".png";
             },
             getApiUrl() {
-                return 'http://api.openweathermap.org/data/2.5/weather?q='+ this.city +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
+                return 'http://api.openweathermap.org/data/2.5/weather?q='+ this.params[0] +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
                 //mise à jour de la BDD
@@ -131,8 +140,6 @@
                             this.dynamicUrl = response.data.weather[0].icon;
                         });  
                 });
-                // TODO : récupérer les infos de la BDD, on peut récupérer l'objet directement dans le then de l'update, pas besoin de faire une requete en plus...
-                
             },
         }, 
         mounted () {

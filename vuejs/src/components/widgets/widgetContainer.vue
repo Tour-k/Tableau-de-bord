@@ -7,15 +7,15 @@
     </v-card-title>
     <v-container class="pa-0">
       <div class="meteo" v-if="serviceId == 0">
-        <weather v-if="widgetType == 0" :widgetId="widgetId"></weather>
-        <weather3H v-else-if="widgetType == 1" :widgetId="widgetId"></weather3H>
-        <weatherDay v-else-if="widgetType == 2" :widgetId="widgetId"></weatherDay>
+        <weather v-if="widgetType == 0" :widgetId="widgetId" :params="params"></weather>
+        <weather3H v-else-if="widgetType == 1" :widgetId="widgetId" :params="params"></weather3H>
+        <weatherDay v-else-if="widgetType == 2" :widgetId="widgetId" :params="params"></weatherDay>
       </div>
       <div class="instagram" v-else-if="serviceId == 1" >
-        <instagram v-if="widgetType == 0" :widgetId="widgetId"></instagram>
+        <instagram v-if="widgetType == 0" :widgetId="widgetId" :params="params"></instagram>
       </div>
       <div class="clock" v-else-if="serviceId == 2">
-        <clock v-if="widgetType == 0" :widgetId="widgetId"></clock>
+        <clock v-if="widgetType == 0" :widgetId="widgetId" :params="params"></clock>
       </div>
     </v-container>
   </v-card>
