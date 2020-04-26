@@ -123,9 +123,10 @@ import store from '../../../store/index.js';
           console.log('response set : ' + JSON.stringify(response.data._id));
           console.log('response set : ' + response);
 
-        }).finally(reponse => {
-          console.log('Finally : ' + JSON.stringify(reponse.data._id))
-          this.dashboardId =null;
+        }).finally(e => {
+          console.log(e)
+          this.$emit('close-side-menu', this.dashboardId );
+          this.dashboardId = null;
           this.serviceId = null;
           this.widgetId = null;
           this.dialog = false;
