@@ -121,15 +121,16 @@ import store from '../../../store/index.js';
         })
         .then(function (response) {
           console.log('response set : ' + response);
-          this.dialog = false;
+
+        }).finally(reponse => {
+          console.log('Finally : ' +reponse)
           this.dashboardId =null;
           this.serviceId = null;
           this.widgetId = null;
+          this.dialog = false;
           this.e1 = 1;
           this.$emit('close-side-menu');
         });
-
-        
       },
       updateService(e){
         this.serviceId = e;
