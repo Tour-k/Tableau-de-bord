@@ -1,18 +1,25 @@
 <template>
   <div id="dash2">
-    <DragNDrop></DragNDrop>
+    <v-container fluide class="d-flex">
+    <DragNDrop2 :widgets="widgets"></DragNDrop2>
+    </v-container>
   </div>
 </template>
 
 <script>
-import DragNDrop from "@/components/Base/drag-and-drop";
+import DragNDrop2 from "@/components/Base/DragNDrop";
 import axios from 'axios';
 import store from '../../store/index.js'
 
 export default {
   name: "app",
   components: {
-    DragNDrop
+    DragNDrop2
+  },
+  data () {
+    return {
+      widgets: null,
+    }
   },
   mounted () {
     //récupérer les widgets du dashboard de base
@@ -27,6 +34,7 @@ export default {
     })
     .then(function (response) {
       console.log( 'response widgets Dashboard'+ JSON.stringify(response.data));
+      this.widgets = response
     });
   }
 };

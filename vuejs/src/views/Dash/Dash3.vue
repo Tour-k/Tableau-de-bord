@@ -1,7 +1,8 @@
 <template>
-  <div id="dash23">
+  <div id="dash3">
     <v-container fluide class="d-flex">
-    <DragNDrop2></DragNDrop2>
+    <DragNDrop2 :widgets="widgets"></DragNDrop2>
+    <widgets></widgets>
     </v-container>
   </div>
 </template>
@@ -16,6 +17,11 @@ export default {
   components: {
     DragNDrop2
   },
+  data () {
+    return {
+      widgets: null,
+    }
+  },
   mounted () {
     //récupérer les widgets du dashboard de base
     axios({
@@ -29,6 +35,7 @@ export default {
     })
     .then(function (response) {
       console.log( 'response widgets Dashboard'+ JSON.stringify(response.data));
+       this.widgets = response
     });
   }
 };

@@ -11,6 +11,12 @@
 import draggable from 'vuedraggable'
 import widgetContainer from '@/components/widgets/widgetContainer' 
 export default {
+  props: {
+    widgets: {
+      type: Object,
+      required: true,
+    }
+  },
   components: {
     draggable,
     widgetContainer,
