@@ -120,7 +120,8 @@ import store from '../../../store/index.js';
           }
         })
         .then(function (response) {
-          console.log('response set : ' + response.data);
+          console.log('response set : ' + JSON.stringify(response.data._id));
+          console.log('response set : ' + response);
 
         }).finally(e => {
           console.log(e)
@@ -130,7 +131,8 @@ import store from '../../../store/index.js';
           this.widgetId = null;
           this.dialog = false;
           this.e1 = 1;
-          
+          this.$emit('close-side-menu');
+          //TODO : redirection vers dashboardId
         });
       },
       updateService(e){
