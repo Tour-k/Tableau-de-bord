@@ -1,5 +1,5 @@
 <template>
-  <v-card raised tile class="mb-5"  
+  <v-card raised tile class="mb-5" min-width="800px"  
   >
     <v-card-title class="pa-0 cardTitleWidgetContainer">
       <v-spacer></v-spacer>

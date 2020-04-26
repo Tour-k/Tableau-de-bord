@@ -1,128 +1,77 @@
 <template>
-    <v-card raised shaped class="cardMeteo">
-        <v-container class="contentMeteo">
+    <v-card raised tile class="cardMeteo">
+        <v-card-title> 
+                <h1 class="headerWeather">
+                    Météo prévisionnelle jour
+                </h1>
+                <v-spacer></v-spacer>
+                <v-icon @click.stop="drawer = !drawer" class="headerWeather">mdi-cog</v-icon>
+        </v-card-title>
+        <v-divider class="dividerMeteo"></v-divider>
+        <v-card-text class="pa-10">
+            <p class="nomVilleMeteo mt-5"> {{info.city.name}} - {{info.city.country}} </p>
             <v-row>
-                <h1> Météo prévisionnelle jours  </h1>
+                <v-col v-for="(n) in 4" :key="n">
+                    <v-row>
+                         {{formatDate(info.list[iterator(n)].dt_txt)}}
+                    </v-row>
+                    <v-avatar color="primary" size="62">
+                        <v-img :src="getUrl(iterator(n))" height="50px" width="50px"/>
+                    </v-avatar>
+                    <v-row class="text-capitalize">
+                        {{info.list[iterator(n)].weather[0].description}}
+                    </v-row>
+                    <v-row>
+                        Min : {{ info.list[iterator(n)].main.temp_min }} °C
+                    </v-row>
+                    <v-row>
+                        Max : {{ info.list[iterator(n)].main.temp_max }} °C
+                    </v-row>
+                    <v-row>
+                        Pressions: {{ info.list[iterator(n)].main.pressure }} hPa
+                    </v-row>
+                </v-col>
             </v-row>
-            <v-form>
-                <v-row>
-                    <v-col>
-                        <v-text-field
-                                label="city*"
-                                placeholder="Entrez une ville"
-                                outlined
-                                v-model="params[0]"
-                                class="text-fieldMeteo"
-                        ></v-text-field>
-                    </v-col>
-                    <v-col>
-                        <v-btn
-                                raised
-                                @click="submitApi()"
-                                class="btnMeteo"
-                        > submit
-                        </v-btn>
-                    </v-col>
-                </v-row>
-            </v-form>
-            <v-row class="nomVilleMeteo">
-                {{info.city.name}} - {{info.city.country}}
-            </v-row>
-            <v-divider class="dividerMeteo"></v-divider>
+            </v-card-text>
+            <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+      width="100%"
+      class="pa-8"
+    >
+    <v-row>
+        <v-spacer></v-spacer>
+        <v-icon class="mr-5" @click="drawer= false">mdi-close</v-icon>
+    </v-row>
+      <h2 class="mb-8">Parametrage du widget météo</h2>
+
+      <p class="mb-0">Recevoir la météo de votre ville : </p>
+        <v-form>
             <v-row>
                 <v-col>
-                    <v-row>
-                        {{info.list[7].dt_txt}}
-                    </v-row>
-                    <v-img :src="getUrl()" height="50px" width="50px"/>
-                    <v-row>
-                        {{info.list[7].main.temp_min}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[7].main.temp_max}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[7].main.pressure}} hPa
-                    </v-row>
-                    <v-row>
-                        {{info.list[7].weather[0].description}}
-                    </v-row>
-                </v-col>
-                <v-col>
-                    <v-row>
-                        {{info.list[15].dt_txt}}
-                    </v-row>
-                    <v-img :src="getUrl()" height="50px" width="50px"/>
-                    <v-row>
-                        {{info.list[15].main.temp_min}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[15].main.temp_max}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[15].main.pressure}} hPa
-                    </v-row>
-                    <v-row>
-                        {{info.list[15].weather[0].description}}
-                    </v-row>
-                </v-col>
-                <v-col>
-                    <v-row>
-                        {{info.list[23].dt_txt}}
-                    </v-row>
-                    <v-img :src="getUrl()" height="50px" width="50px"/>
-                    <v-row>
-                        {{info.list[23].main.temp_min}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[23].main.temp_max}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[23].main.pressure}} hPa
-                    </v-row>
-                    <v-row>
-                        {{info.list[23].weather[0].description}}
-                    </v-row>
-                </v-col>
-                <v-col>
-                    <v-row>
-                        {{info.list[31].dt_txt}}
-                    </v-row>
-                    <v-img :src="getUrl()" height="50px" width="50px"/>
-                    <v-row>
-                        {{info.list[31].main.temp_min}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[31].main.temp_max}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[31].main.pressure}} hPa
-                    </v-row>
-                    <v-row>
-                        {{info.list[31].weather[0].description}}
-                    </v-row>
-                </v-col>
-                <v-col>
-                    <v-row>
-                        {{info.list[39].dt_txt}}
-                    </v-row>
-                    <v-img :src="getUrl()" height="50px" width="50px"/>
-                    <v-row>
-                        {{info.list[39].main.temp_min}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[39].main.temp_max}} °
-                    </v-row>
-                    <v-row>
-                        {{info.list[39].main.pressure}} hPa
-                    </v-row>
-                    <v-row>
-                        {{info.list[39].weather[0].description}}
-                    </v-row>
+                    <v-text-field
+                            label="city*"
+                            placeholder="Entrez une ville"
+                            outlined
+                            v-model="params[0]"
+                            class="text-fieldMeteo"
+                    ></v-text-field>
                 </v-col>
             </v-row>
-            <v-divider class="dividerMeteo"></v-divider>
-        </v-container>
+            <v-row>
+                <v-col>
+                    <v-btn
+                        raised
+                        @click="submitApi()"
+                        class="btnMeteo"
+                    > submit
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </v-form>
+    </v-navigation-drawer>
+    
     </v-card>
 </template>
 
@@ -146,6 +95,7 @@
         },
         data() {
             return {
+                drawer: false,
                 info: null,
                 dynamicUrl: null,
                 apiUrl: null,
@@ -161,11 +111,57 @@
                     arrRes = this.params
                 }
                 return arrRes
-            }
+            },
         },
         methods: {
-            getUrl() {
-                return "http://openweathermap.org/img/wn/"+ this.dynamicUrl +".png";
+            iterator(n) {
+                return (n * 8) - 1;
+            },
+            formatDate(fullDate){
+                let splitFullDayH = fullDate.split(" ");
+                let splitDay = splitFullDayH[0].split("-");
+                let splitH = splitFullDayH[1].split(":");
+                let mounth = "";
+                if(splitDay[1] == '01'){
+                    mounth = "jan."
+                }
+                if(splitDay[1] == '02'){
+                    mounth = "fev."
+                }
+                if(splitDay[1] == '03'){
+                    mounth = "far."
+                }
+                if(splitDay[1] == '04'){
+                    mounth = "avr."
+                }
+                if(splitDay[1] == '05'){
+                    mounth = "mai."
+                }
+                if(splitDay[1] == '06'){
+                    mounth = "jun."
+                }
+                if(splitDay[1] == '07'){
+                    mounth = "jui."
+                }
+                if(splitDay[1] == '08'){
+                    mounth = "aou."
+                }
+                if(splitDay[1] == '09'){
+                    mounth = "sep."
+                }
+                if(splitDay[1] == '10'){
+                    mounth = "oct."
+                }
+                if(splitDay[1] == '11'){
+                    mounth = "nov."
+                }
+                if(splitDay[1] == '12'){
+                    mounth = "dec."
+                }
+                return splitDay[2] +' '+ mounth +' à '+ splitH[0] +'h' + splitH[1] ;
+            },
+            getUrl(i) {
+                return "http://openweathermap.org/img/wn/"+ this.info.list[i].weather[0].icon +".png";
             },
             getApiUrl() {
                 return 'http://api.openweathermap.org/data/2.5/forecast?q='+ this.defaultParam[0] +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
@@ -197,7 +193,6 @@
                 .get(this.getApiUrl())
                 .then(response => {
                     this.info = response.data;
-                    this.dynamicUrl = response.data.list[0].weather[0].icon;
                 })
         }
     }
