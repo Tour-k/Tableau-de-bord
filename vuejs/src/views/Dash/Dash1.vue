@@ -1,6 +1,7 @@
 <template>
   <div id="dash1">
     <v-container fluide class="d-flex">
+      {{widgets}}
     <DragNDrop2 :widgets="widgets" :state="state"></DragNDrop2>
     </v-container>
   </div>

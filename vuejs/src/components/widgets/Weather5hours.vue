@@ -80,7 +80,18 @@
 
     export default {
         name: "Weather5hours",
-        components: {
+        props: {
+            widgetId: { 
+                type: String,
+                required: true,
+            },
+            params: {
+                type: Array,
+                required: true,
+                default: function () {
+                    return ["Paris"];
+                }
+            },
         },
         data() {
             return {
@@ -139,7 +150,7 @@
                 return "http://openweathermap.org/img/wn/"+ this.info.list[i].weather[0].icon +".png";
             },
             getApiUrl() {
-                return 'http://api.openweathermap.org/data/2.5/forecast?q='+ this.city +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
+                return 'http://api.openweathermap.org/data/2.5/forecast?q='+ this.params[0] +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
                 axios

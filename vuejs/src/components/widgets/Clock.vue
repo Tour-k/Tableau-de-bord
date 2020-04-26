@@ -47,8 +47,14 @@
 
     export default {
         name: "Clock",
-        components: {
-
+        props: {
+            params: {
+                type: Array,
+                required: true,
+                default: function () {
+                    return ["Europe", "Paris"]
+                }
+            },
         },
         data () {
             return {

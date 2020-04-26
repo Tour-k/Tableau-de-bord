@@ -11,7 +11,7 @@
                                 label="city*"
                                 placeholder="Entrez une ville"
                                 outlined
-                                v-model="city"
+                                v-model="params[0]"
                                 class="text-fieldMeteo"
                         ></v-text-field>
                     </v-col>
@@ -131,8 +131,18 @@
 
     export default {
         name: "WeatherDays",
-        components: {
-
+        props: {
+            widgetId: { 
+                type: String,
+                required: true,
+            },
+            params: {
+                type: Array,
+                required: true,
+                default: function () {
+                    return ["Paris"]
+                }
+            },
         },
         data() {
             return {

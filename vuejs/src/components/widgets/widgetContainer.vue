@@ -2,6 +2,7 @@
   <v-card raised tile class="mb-5"  
   >
     <v-card-title class="pa-0 cardTitleWidgetContainer">
+      {{ params}} - {{widgetId}} - {{serviceId}}
       <v-spacer></v-spacer>
         <DeleteWidget :widgetId="widgetId"></DeleteWidget>
     </v-card-title>

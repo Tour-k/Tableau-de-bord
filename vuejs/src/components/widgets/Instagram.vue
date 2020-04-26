@@ -60,6 +60,19 @@
 import axios from 'axios';
 
 export default {
+  props: {
+    widgetId: { 
+      type: String,
+      required: true,
+    },
+    params: {
+      type: Array,
+      required: true,
+      default: function () {
+          return ["difractomusic"]
+      }
+    },
+  },
   data () {
     return {
         drawer: false,
@@ -70,7 +83,7 @@ export default {
   },
   methods: {
     getApiURL(){
-      return  this.url + this.pseudo + '/';
+      return  this.url + this.params[0] + '/';
     }, 
     submitApi() {
       axios({
