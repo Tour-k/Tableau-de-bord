@@ -164,9 +164,8 @@ import AddWidgetPopup from '@/components/popups/addWidget/addWidgets'
       },
     },
     methods: {
-      closeSideMenu(dashId) {
+      closeSideMenu() {
         this.drawer = false
-        this.$emit('reload-dashboard-info', dashId );
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <NavBarDashboard v-on:reload-dashboard-info="reloadDashboardInfo">
+    <NavBarDashboard>
       <template v-slot:content>
         <router-view></router-view>
       </template>
@@ -27,12 +27,6 @@ export default {
       user: {},
     }
   },
-  methods: {
-    reloadDashboardInfo(id) {
-      console.log("dash id to reload : " + id);
-      location.reload()
-    }
-  }
   
   
   // mounted () {

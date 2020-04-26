@@ -1,7 +1,7 @@
 <template>
   <div id="dash2">
     <v-container fluide class="d-flex">
-    <DragNDrop2 :widgets="widgets"></DragNDrop2>
+    <DragNDrop2 :widgets="widgets" :state="state"></DragNDrop2>
     </v-container>
   </div>
 </template>
@@ -18,11 +18,13 @@ export default {
   },
   data () {
     return {
-      widgets: null,
+      widgets: [],
+      state: ''
     }
   },
   mounted () {
     //récupérer les widgets du dashboard de base
+    this.state = "loading"
     axios({
       method: 'post',
       url: 'http://localhost:3000/widget/getWidgetsByDashboardId',
@@ -34,6 +36,7 @@ export default {
     })
     .then(response => {
       this.widgets = response.data;
+      this.state = "reçu"
     });
   }
 };

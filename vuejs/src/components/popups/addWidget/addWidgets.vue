@@ -125,13 +125,13 @@ import store from '../../../store/index.js';
 
         }).finally(e => {
           console.log(e)
-          this.$emit('close-side-menu', this.dashboardId );
           this.dashboardId = null;
           this.serviceId = null;
           this.widgetId = null;
           this.dialog = false;
           this.e1 = 1;
           this.$emit('close-side-menu');
+          location.reload()
           //TODO : redirection vers dashboardId
         });
       },
