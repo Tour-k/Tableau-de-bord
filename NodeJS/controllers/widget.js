@@ -12,7 +12,7 @@ exports.setWidget = (req, res) => {
         widgetId: req.body.widgetId
     });
     widget.save()
-        .then(() => res.status(201).json({ message: 'widget créé !'}))
+        .then((widget) => res.status(201).json(widget))
         .catch(error => {
             res.status(400).json({ error });
             console.log(error)

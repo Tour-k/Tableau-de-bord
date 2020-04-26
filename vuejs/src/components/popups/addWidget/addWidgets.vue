@@ -120,13 +120,15 @@ import store from '../../../store/index.js';
           }
         })
         .then(function (response) {
-          console.log('response set : ' + response);
+          console.log('response set : ' + JSON.stringify(response.data._id));
+          //TODO : arriver à modifier ces valeurs
           this.dialog = false;
           this.dashboardId =null;
           this.serviceId = null;
           this.widgetId = null;
           this.e1 = 1;
           this.$emit('close-side-menu');
+          //TODO : redirection vers dashboardId
         });
 
         
