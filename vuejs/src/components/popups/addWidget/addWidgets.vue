@@ -120,16 +120,11 @@ import store from '../../../store/index.js';
           }
         })
         .then(function (response) {
-<<<<<<< HEAD
           console.log('response set : ' + JSON.stringify(response.data._id));
-          //TODO : arriver à modifier ces valeurs
-          this.dialog = false;
-=======
           console.log('response set : ' + response);
 
         }).finally(reponse => {
-          console.log('Finally : ' +reponse)
->>>>>>> 753562fec8e499ce4c725005df199799b45f2b52
+          console.log('Finally : ' + JSON.stringify(reponse.data._id))
           this.dashboardId =null;
           this.serviceId = null;
           this.widgetId = null;
