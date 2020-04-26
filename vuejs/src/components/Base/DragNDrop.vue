@@ -11,7 +11,11 @@
   <draggable v-model="myArray" v-if="!isEmpty">
     <transition-group>
         <div v-for="(element, index) in widgets" :key="index">
-            <widgetContainer :widgetId="element._id" :serviceId="element.serviceId" :widgetType="element.widgetId" :params="element.params"></widgetContainer>
+            <widgetContainer 
+            :widgetId="element._id" 
+            :serviceId="element.serviceId" 
+            :widgetType="element.widgetId" 
+            :params="element.params"></widgetContainer>
         </div>
     </transition-group>
   </draggable>
