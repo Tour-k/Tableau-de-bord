@@ -120,7 +120,7 @@ import store from '../../../store/index.js';
           }
         })
         .then(function (response) {
-          console.log('response set : ' + response);
+          console.log('response set : ' + response.data);
 
         }).finally(reponse => {
           console.log('Finally : ' +reponse)
