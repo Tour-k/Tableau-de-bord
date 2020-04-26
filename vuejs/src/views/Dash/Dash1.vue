@@ -21,7 +21,7 @@ export default {
     // Weather5hours
   },
   mounted () {
-    //récupérer les widgets du dashboard de base
+    //récupérer les widgets du dashboard
     axios({
       method: 'post',
       url: 'http://localhost:3000/widget/getWidgetsByDashboardId',
@@ -33,6 +33,7 @@ export default {
     })
     .then(function (response) {
       console.log( 'response widgets Dashboard'+ JSON.stringify(response.data));
+      // TODO : parcourir l'objet response.data et afficher les widgets voulu
     });
   }
 }

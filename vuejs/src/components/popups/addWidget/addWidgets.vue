@@ -120,7 +120,7 @@ import store from '../../../store/index.js';
           }
         })
         .then(function (response) {
-          console.log(response);
+          console.log('response set : ' + response);
           this.dialog = false;
           this.dashboardId =null;
           this.serviceId = null;
