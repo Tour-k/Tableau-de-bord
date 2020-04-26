@@ -9,7 +9,7 @@ exports.setWidget = (req, res) => {
         params: req.body.params,
         numDashboard: req.body.numDashboard,
         serviceId : req.body.serviceId,
-        widgetId: req.body.widgetId
+        widgetType: req.body.widgetType
     });
     widget.save()
         .then((widget) => res.status(201).json(widget))
