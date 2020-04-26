@@ -2,7 +2,6 @@
   <div id="dash3">
     <v-container fluide class="d-flex">
     <DragNDrop2 :widgets="widgets"></DragNDrop2>
-    <widgets></widgets>
     </v-container>
   </div>
 </template>
@@ -33,9 +32,8 @@ export default {
         numDashboard: 2
       }
     })
-    .then(function (response) {
-      console.log( 'response widgets Dashboard'+ JSON.stringify(response.data));
-       this.widgets = response
+    .then(response => {
+      this.widgets = response.data;
     });
   }
 };

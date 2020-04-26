@@ -38,10 +38,8 @@ export default {
         numDashboard: 0
       }
     })
-    .then(function (response) {
-      console.log( 'response widgets Dashboard'+ JSON.stringify(response.data));
-      this.widgets = response
-      // TODO : parcourir l'objet response.data et afficher les widgets voulu
+    .then(response => {
+      this.widgets = response.data;
     });
   }
 }
