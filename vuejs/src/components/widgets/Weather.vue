@@ -133,7 +133,7 @@
                 headers:{'Authorization' : `Basic {$store.state.token}`},
                 data: {
                     widgetId: this.widgetId, 
-                    params: [this.city]
+                    params: [this.defaultParam[0]]
                     }
                 })
                 .then(response => {
