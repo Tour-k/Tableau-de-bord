@@ -26,14 +26,14 @@ exports.getWidget = (req, res) => {
 };
 
 exports.updateWidget = (req, res) => {
-    console.log(req.body.widgetId)
     Widget.updateOne({ _id: req.body.widgetId }, {params: req.body.params })
         .then((widget) => res.status(200).json({ message: 'Widget modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };
 
 exports.deleteWidget = (req, res) => {
-    Widget.deleteOne({ name: req.params.name})
+    console.log(req.body.widgetId)
+    Widget.deleteOne({ _id: req.body.widgetId })
         .then(() => { res.status(200).json({ message: 'Deleted!' }) })
         .catch((error) => { res.status(400).json({ error: error }) });
 };
