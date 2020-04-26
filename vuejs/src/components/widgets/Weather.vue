@@ -82,6 +82,8 @@
 
 <script>
     import axios from 'axios';
+    // TODO : supprimer convert c'est un import de test
+    import convert from '@/components/Utils/convertIdToName';
     export default {
         name: "weather",
         props: {
@@ -154,7 +156,9 @@
                 .then(response => {
                     this.info = response.data;
                     this.dynamicUrl = response.data.weather[0].icon;
-                })
+                });
+            //TODO : supprimer ce test 
+            console.log(convert(0))
         },
 
     }
