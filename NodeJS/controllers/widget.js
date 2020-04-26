@@ -26,7 +26,7 @@ exports.getWidget = (req, res) => {
 };
 
 exports.updateWidget = (req, res) => {
-    Widget.updateOne({ _id: req.params.id }, { ...req.body, name: req.params.name })
+    Widget.updateOne({ _id: req.params.id }, {params: req.body.params})
         .then(() => res.status(200).json({ message: 'Widget modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };
@@ -41,7 +41,7 @@ exports.deleteWidget = (req, res) => {
 exports.getWidgetsByDashboardId = (req, res) => {
     Widget.find({userId : req.body.userId, numDashboard : req.body.numDashboard})
         .then((widgets) => {
-            console.log(widgets);
+            // console.log(widgets);
             res.status(200).json(widgets)
         })
         .catch((erreur)=>{

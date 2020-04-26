@@ -87,7 +87,8 @@
     export default {
         name: "weather",
         props: {
-            test: String
+            test: String,
+            widgetId: String
         },
         components: {
 
@@ -112,33 +113,34 @@
                 return 'http://api.openweathermap.org/data/2.5/weather?q='+ this.city +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
+                //mise à jour de la BDD
                 axios({
                 method: 'post',
-                url: 'http://localhost:3000/widget/setWidget',
+                url: 'http://localhost:3000/widget/updateWidget',
                 headers:{'Authorization' : `Basic {$store.state.token}`},
                 data: {
-                    name: 'weather',
                     userId: this.$store.state.userId, 
-                    refresh: 3000,
-                    hidden: false,
+                    id: this.widgetId,
                     params: [this.city]
                     }
                 })
                 .then(function (response) {
                     console.log(response);
+                    console.log('test update')
                 });
-            axios({
-                method: 'post',
-                url: 'http://localhost:3000/widget/getWidget',
-                headers:{'Authorization' : `Basic {store.state.token}`},
-                data: {
-                    userId: this.$store.state.userId, 
-                    name : 'weather'}
-            })
-            .then(function (response) {
-                console.log('response getWidget: '+response.data.params[0]);
-                console.log('this city: '+ this.$el.city);
-                // vm.$set(this.someObject, 'city', response.data.params[0]);
+                // TODO : récupérer les infos de la BDD, on peut récupérer l'objet directement dans le then de l'update, pas besoin de faire une requete en plus...
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:3000/widget/getWidget',
+                    headers:{'Authorization' : `Basic {store.state.token}`},
+                    data: {
+                        userId: this.$store.state.userId, 
+                        name : 'weather'}
+                })
+                .then(function (response) {
+                    console.log('response getWidget: '+response.data.params[0]);
+                    console.log('this city: '+ this.$el.city);
+                    // vm.$set(this.someObject, 'city', response.data.params[0]);
                 
                 axios
                     .get(this.getApiUrl())
