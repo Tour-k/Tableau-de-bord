@@ -32,9 +32,8 @@ export default {
         numDashboard: 1
       }
     })
-    .then(function (response) {
-      console.log( 'response widgets Dashboard'+ JSON.stringify(response.data));
-      this.widgets = response
+    .then(response => {
+      this.widgets = response.data;
     });
   }
 };
