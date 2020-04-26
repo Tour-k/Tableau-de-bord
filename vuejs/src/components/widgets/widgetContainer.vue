@@ -46,6 +46,10 @@ export default {
       type: String,
       required: true,
       default: ""
+    },
+    params: {
+      type: Array,
+      required: true,
     }
   }, 
   components: {

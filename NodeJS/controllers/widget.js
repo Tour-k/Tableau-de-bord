@@ -26,7 +26,8 @@ exports.getWidget = (req, res) => {
 };
 
 exports.updateWidget = (req, res) => {
-    Widget.updateOne({ _id: req.params.id }, {params: req.body.params})
+    console.log(req.body.widgetId)
+    Widget.updateOne({ _id: req.body.widgetId }, {params: req.body.params })
         .then((widget) => res.status(200).json({ message: 'Widget modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };

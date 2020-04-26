@@ -82,8 +82,6 @@
 
 <script>
     import axios from 'axios';
-    // TODO : supprimer convert c'est un import de test
-    import convert from '@/components/Utils/convertIdToName';
     export default {
         name: "weather",
         props: {
@@ -119,35 +117,19 @@
                 url: 'http://localhost:3000/widget/updateWidget',
                 headers:{'Authorization' : `Basic {$store.state.token}`},
                 data: {
-                    userId: this.$store.state.userId, 
-                    
+                    widgetId: this.widgetId, 
                     params: [this.city]
                     }
                 })
                 .then(response => {
-                    console.log(response.data.message);
-                    axios({
-                    method: 'post',
-                    url: 'http://localhost:3000/widget/getWidget',
-                    headers:{'Authorization' : `Basic {store.state.token}`},
-                    data: {
-                        id: this.widgetId
-                        }
-                    })
-                    .then(function (response) {
-                        console.log('response getWidget: '+response.data.params[0]);
-                        // console.log('this city: '+ this.$el.city);
-                        // vm.$set(this.someObject, 'city', response.data.params[0]);
-                    
-                        axios
-                            .get(this.getApiUrl())
-                            .then(response => {
-                                this.info = response.data;
-                                this.dynamicUrl = response.data.weather[0].icon;
-                                this.drawer = false;
-                            })
-                    });
-                    
+                    console.log(response.data.message);  
+                    this.drawer = false;
+                    axios
+                        .get(this.getApiUrl())
+                        .then(response => {
+                            this.info = response.data;
+                            this.dynamicUrl = response.data.weather[0].icon;
+                        });  
                 });
                 // TODO : récupérer les infos de la BDD, on peut récupérer l'objet directement dans le then de l'update, pas besoin de faire une requete en plus...
                 
@@ -160,8 +142,6 @@
                     this.info = response.data;
                     this.dynamicUrl = response.data.weather[0].icon;
                 });
-            //TODO : supprimer ce test 
-            console.log(convert(0))
         },
 
     }
