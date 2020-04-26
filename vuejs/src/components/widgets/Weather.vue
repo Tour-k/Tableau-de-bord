@@ -59,7 +59,7 @@
                                         label="city*"
                                         placeholder="Entrez une ville"
                                         outlined
-                                        v-model="city"
+                                        v-model="params[0]"
                                         class="text-fieldMeteo"
                                 ></v-text-field>
                             </v-col>
@@ -106,7 +106,7 @@
         },
         computed: {
             defaultParam() {
-                let arrRes = "";
+                let arrRes = [];
                 if (this.params.length == 0) {
                     arrRes = ["Paris"];
                 } else {

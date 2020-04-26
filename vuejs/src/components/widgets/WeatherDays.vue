@@ -2,7 +2,7 @@
     <v-card raised shaped class="cardMeteo">
         <v-container class="contentMeteo">
             <v-row>
-                <h1> &bull; Météo 3h &bull; </h1>
+                <h1> Météo prévisionnelle jours  </h1>
             </v-row>
             <v-form>
                 <v-row>
@@ -154,7 +154,7 @@
         },
         computed: {
             defaultParam() {
-                let arrRes = "";
+                let arrRes = [];
                 if (this.params.length == 0) {
                     arrRes = ["Paris"];
                 } else {

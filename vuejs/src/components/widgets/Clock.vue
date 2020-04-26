@@ -67,7 +67,7 @@
         },
         computed: {
             defaultParam() {
-                let arrRes = "";
+                let arrRes = [];
                 if (this.params.length == 0) {
                     arrRes = ["Paris"];
                 } else {

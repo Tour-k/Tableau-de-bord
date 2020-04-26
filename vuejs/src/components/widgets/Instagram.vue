@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     defaultParam() {
-        let arrRes = "";
+        let arrRes = [];
         if (this.params.length == 0) {
             arrRes = ["animauxtv"];
         } else {
