@@ -131,8 +131,6 @@
                             this.dynamicUrl = response.data.weather[0].icon;
                         });  
                 });
-                // TODO : récupérer les infos de la BDD, on peut récupérer l'objet directement dans le then de l'update, pas besoin de faire une requete en plus...
-                
             },
         }, 
         mounted () {

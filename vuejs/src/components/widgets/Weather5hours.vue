@@ -80,6 +80,9 @@
 
     export default {
         name: "Weather5hours",
+        props: {
+          widgetId: String  
+        },
         components: {
         },
         data() {
@@ -142,12 +145,25 @@
                 return 'http://api.openweathermap.org/data/2.5/forecast?q='+ this.city +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
-                axios
-                    .get(this.getApiUrl())
-                    .then(response => {
-                        this.info = response.data;
-                        this.drawer = false;
-                    })
+                axios({
+                method: 'post',
+                url: 'http://localhost:3000/widget/updateWidget',
+                headers:{'Authorization' : `Basic {$store.state.token}`},
+                data: {
+                    widgetId: this.widgetId, 
+                    params: [this.city]
+                    }
+                })
+                .then(response => {
+                    console.log(response.data.message);  
+                    this.drawer = false;
+                    axios
+                        .get(this.getApiUrl())
+                        .then(response => {
+                            this.info = response.data;
+                            this.dynamicUrl = response.data.weather[0].icon;
+                        });  
+                });
             }
         },
         mounted() {
