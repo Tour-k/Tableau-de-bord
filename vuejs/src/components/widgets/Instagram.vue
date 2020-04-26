@@ -68,19 +68,36 @@ export default {
         instaDatas: {}
     }
   },
+  props: {
+          widgetId: String  
+  },
   methods: {
     getApiURL(){
       return  this.url + this.pseudo + '/';
     }, 
     submitApi() {
       axios({
-        method: 'get',
-        url: this.getApiURL(),
-      })
-      .then(response => {
-        this.instaDatas = response.data;
-        this.drawer = false;
-      }) 
+        method: 'post',
+        url: 'http://localhost:3000/widget/updateWidget',
+        headers:{'Authorization' : `Basic {$store.state.token}`},
+        data: {
+            widgetId: this.widgetId, 
+            params: [this.pseudo]
+            }
+        })
+        .then(response => {
+            console.log(response.data.message);  
+            this.drawer = false;
+            axios({
+              method: 'get',
+              url: this.getApiURL(),
+            })
+            .then(response => {
+              this.instaDatas = response.data;
+              this.drawer = false;
+            }) 
+        });
+      
     }
   },
   mounted () {

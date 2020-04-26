@@ -50,6 +50,9 @@
         components: {
 
         },
+        props: {
+          widgetId: String  
+        },
         data () {
             return {
                 continent:"Europe",
@@ -61,11 +64,24 @@
                 return 'http://worldtimeapi.org/api/timezone/Asia/Tokyo'
             },
             submitApi() {
-                axios
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:3000/widget/updateWidget',
+                    headers:{'Authorization' : `Basic {$store.state.token}`},
+                    data: {
+                        widgetId: this.widgetId, 
+                        params: [this.continent, this.city]
+                        }
+                })
+                .then(response => {
+                    console.log(response.data.message);  
+                    axios
                     .get(this.getApiUrl())
                     .then(response => {
                         this.info = response.data;
                     })
+                });
+                
             },
         },
         mounted () {
