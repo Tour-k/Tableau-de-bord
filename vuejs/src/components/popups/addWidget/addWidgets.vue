@@ -78,6 +78,8 @@ import Step1 from "@/components/popups/addWidget/step1";
 import Step2 from "@/components/popups/addWidget/step2";
 import Step3 from "@/components/popups/addWidget/step3";
 import { mapState } from 'vuex'
+import axios from 'axios';
+import store from '../../../store/index.js';
 
   export default {
     components: {
@@ -102,15 +104,32 @@ import { mapState } from 'vuex'
         console.log("Widget id : " + this.widgetId);
         console.log("Dashboard id : " + this.dashboardId);
         console.log("User Id : " + this.$store.state.userId);
-        // TODO : ajouter axios et la route pour set le widget dans la bdd
+        
+        axios({
+          method: 'post',
+          url: 'http://localhost:3000/widget/setWidget',
+          headers:{'Authorization' : `Basic ${store.state.token}`},
+          data: {
+            name: 'default',
+            userId: store.state.userId, 
+            refresh: 3000,
+            numDashboard: this.dashboardId,
+            hidden: false,
+            serviceId: this.serviceId,
+            widgetId: this.widgetId
+          }
+        })
+        .then(function (response) {
+          console.log(response);
+          this.dialog = false;
+          this.dashboardId =null;
+          this.serviceId = null;
+          this.widgetId = null;
+          this.e1 = 1;
+          this.$emit('close-side-menu');
+        });
 
-        // TODO .then : 
-        this.dialog = false;
-        this.dashboardId =null;
-        this.serviceId = null;
-        this.widgetId = null;
-        this.e1 = 1;
-        this.$emit('close-side-menu');
+        
       },
       updateService(e){
         this.serviceId = e;
