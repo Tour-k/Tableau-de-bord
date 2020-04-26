@@ -20,14 +20,14 @@ exports.setWidget = (req, res) => {
 };
 
 exports.getWidget = (req, res) => {
-    Widget.findOne({ _id: req.body.id })
-        .then(user => res.status(200).json(user))
+    Widget.findOne({ _id: req.body.id})
+        .then(widget => res.status(200).json(widget))
         .catch(error => res.status(400).json({ error }));
 };
 
 exports.updateWidget = (req, res) => {
     Widget.updateOne({ _id: req.params.id }, {params: req.body.params})
-        .then(() => res.status(200).json({ message: 'Widget modifié !'}))
+        .then((widget) => res.status(200).json({ message: 'Widget modifié !'}))
         .catch(error => res.status(400).json({ error }));
 };
 

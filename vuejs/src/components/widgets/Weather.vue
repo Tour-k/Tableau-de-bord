@@ -120,36 +120,37 @@
                 headers:{'Authorization' : `Basic {$store.state.token}`},
                 data: {
                     userId: this.$store.state.userId, 
-                    id: this.widgetId,
+                    
                     params: [this.city]
                     }
                 })
-                .then(function (response) {
-                    console.log(response);
-                    console.log('test update')
-                });
-                // TODO : récupérer les infos de la BDD, on peut récupérer l'objet directement dans le then de l'update, pas besoin de faire une requete en plus...
-                axios({
+                .then(response => {
+                    console.log(response.data.message);
+                    axios({
                     method: 'post',
                     url: 'http://localhost:3000/widget/getWidget',
                     headers:{'Authorization' : `Basic {store.state.token}`},
                     data: {
-                        userId: this.$store.state.userId, 
-                        name : 'weather'}
-                })
-                .then(function (response) {
-                    console.log('response getWidget: '+response.data.params[0]);
-                    console.log('this city: '+ this.$el.city);
-                    // vm.$set(this.someObject, 'city', response.data.params[0]);
-                
-                axios
-                    .get(this.getApiUrl())
-                    .then(response => {
-                        this.info = response.data;
-                        this.dynamicUrl = response.data.weather[0].icon;
-                        this.drawer = false;
+                        id: this.widgetId
+                        }
                     })
+                    .then(function (response) {
+                        console.log('response getWidget: '+response.data.params[0]);
+                        // console.log('this city: '+ this.$el.city);
+                        // vm.$set(this.someObject, 'city', response.data.params[0]);
+                    
+                        axios
+                            .get(this.getApiUrl())
+                            .then(response => {
+                                this.info = response.data;
+                                this.dynamicUrl = response.data.weather[0].icon;
+                                this.drawer = false;
+                            })
+                    });
+                    
                 });
+                // TODO : récupérer les infos de la BDD, on peut récupérer l'objet directement dans le then de l'update, pas besoin de faire une requete en plus...
+                
             },
         }, 
         mounted () {
