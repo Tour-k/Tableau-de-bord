@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
   export default {
     props: {
       widgetId: {
@@ -68,10 +70,22 @@
       }
     },
     methods: {
-      //TODO : add route to delete component
       deleteWidget() {
         console.log('id du widget à supprimer : ' + this.widgetId);
-        this.dialog = false;
+        axios({
+                method: 'post',
+                url: 'http://localhost:3000/widget/deleteWidget',
+                headers:{'Authorization' : `Basic {$store.state.token}`},
+                data: {
+                    widgetId: this.widgetId, 
+                    }
+                })
+                .then(response => {
+                    console.log(response.data.message); 
+                    this.dialog = false;
+                })
+        
+        
       }
     }
   }
