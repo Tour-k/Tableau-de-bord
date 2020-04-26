@@ -54,7 +54,7 @@
                             label="city*"
                             placeholder="Entrez une ville"
                             outlined
-                            v-model="city"
+                            v-model="params[0]"
                             class="text-fieldMeteo"
                     ></v-text-field>
                 </v-col>
@@ -93,13 +93,23 @@
                 }
             },
         },
+        computed: {
+            defaultParam() {
+                let arrRes = "";
+                if (this.params.length == 0) {
+                    arrRes = ["Paris"];
+                } else {
+                    arrRes = this.params
+                }
+                return arrRes
+            }
+        },
         data() {
             return {
                 drawer: false,
                 info: null,
                 dynamicUrl: null,
                 apiUrl: null,
-                city: "Paris",
             }
         },
         methods: {
@@ -150,15 +160,28 @@
                 return "http://openweathermap.org/img/wn/"+ this.info.list[i].weather[0].icon +".png";
             },
             getApiUrl() {
-                return 'http://api.openweathermap.org/data/2.5/forecast?q='+ this.params[0] +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
+                return 'http://api.openweathermap.org/data/2.5/forecast?q='+ this.defaultParam[0] +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
-                axios
-                    .get(this.getApiUrl())
-                    .then(response => {
-                        this.info = response.data;
-                        this.drawer = false;
-                    })
+                axios({
+                method: 'post',
+                url: 'http://localhost:3000/widget/updateWidget',
+                headers:{'Authorization' : `Basic {$store.state.token}`},
+                data: {
+                    widgetId: this.widgetId, 
+                    params: [this.city]
+                    }
+                })
+                .then(response => {
+                    console.log(response.data.message);  
+                    this.drawer = false;
+                    axios
+                        .get(this.getApiUrl())
+                        .then(response => {
+                            this.info = response.data;
+                            this.dynamicUrl = response.data.weather[0].icon;
+                        });  
+                });
             }
         },
         mounted() {

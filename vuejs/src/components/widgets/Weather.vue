@@ -92,13 +92,8 @@
             params: {
                 type: Array,
                 required: true,
-                default: function () {
-                    return ["Paris"]
-                }
+                default: () => ['Paris']
             },
-        },
-        components: {
-
         },
         data () {
           return {
@@ -109,6 +104,17 @@
               city: "Paris",
           }
         },
+        computed: {
+            defaultParam() {
+                let arrRes = "";
+                if (this.params.length == 0) {
+                    arrRes = ["Paris"];
+                } else {
+                    arrRes = this.params
+                }
+                return arrRes
+            }
+        },
         methods: {
             roundTemp(temp) {
                 return Math.round(parseInt(temp));
@@ -117,7 +123,7 @@
                 return "http://openweathermap.org/img/wn/"+ this.dynamicUrl +".png";
             },
             getApiUrl() {
-                return 'http://api.openweathermap.org/data/2.5/weather?q='+ this.params[0] +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
+                return 'http://api.openweathermap.org/data/2.5/weather?q='+ this.defaultParam[0] +'&appid=43daf01fa0e80de005440d64a76ed5bb&units=metric&lang=fr'
             },
             submitApi() {
                 //mise à jour de la BDD

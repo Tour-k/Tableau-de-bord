@@ -55,6 +55,9 @@
                     return ["Europe", "Paris"]
                 }
             },
+            widgetId: {
+                type: String
+            }
         },
         data () {
             return {
@@ -62,16 +65,40 @@
                 city: "Paris",
             }
         },
+        computed: {
+            defaultParam() {
+                let arrRes = "";
+                if (this.params.length == 0) {
+                    arrRes = ["Paris"];
+                } else {
+                    arrRes = this.params
+                }
+                return arrRes
+            }
+        },
         methods: {
             getApiUrl() {
                 return 'http://worldtimeapi.org/api/timezone/Asia/Tokyo'
             },
             submitApi() {
-                axios
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:3000/widget/updateWidget',
+                    headers:{'Authorization' : `Basic {$store.state.token}`},
+                    data: {
+                        widgetId: this.widgetId, 
+                        params: [this.defaultParam[0], this.defaultParam[1]]
+                        }
+                })
+                .then(response => {
+                    console.log(response.data.message);  
+                    axios
                     .get(this.getApiUrl())
                     .then(response => {
                         this.info = response.data;
                     })
+                });
+                
             },
         },
         mounted () {

@@ -83,6 +83,9 @@ import axios from 'axios';
                 .then(response => {
                     console.log(response.data.message); 
                     this.dialog = false;
+                    location.reload()
+
+
                 })
         
         

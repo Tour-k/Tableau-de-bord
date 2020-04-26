@@ -9,7 +9,7 @@ exports.setWidget = (req, res) => {
         params: req.body.params,
         numDashboard: req.body.numDashboard,
         serviceId : req.body.serviceId,
-        widgetId: req.body.widgetId
+        widgetType: req.body.widgetType
     });
     widget.save()
         .then((widget) => res.status(201).json(widget))
@@ -26,6 +26,7 @@ exports.getWidget = (req, res) => {
 };
 
 exports.updateWidget = (req, res) => {
+    console.log(req.body.widgetId)
     Widget.updateOne({ _id: req.body.widgetId }, {params: req.body.params })
         .then((widget) => res.status(200).json({ message: 'Widget modifié !'}))
         .catch(error => res.status(400).json({ error }));

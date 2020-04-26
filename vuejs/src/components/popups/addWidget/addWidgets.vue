@@ -80,6 +80,7 @@ import Step3 from "@/components/popups/addWidget/step3";
 import { mapState } from 'vuex'
 import axios from 'axios';
 import store from '../../../store/index.js';
+import convertIdToName from '../../Utils/convertIdToName';
 
   export default {
     components: {
@@ -110,13 +111,13 @@ import store from '../../../store/index.js';
           url: 'http://localhost:3000/widget/setWidget',
           headers:{'Authorization' : `Basic ${store.state.token}`},
           data: {
-            name: 'default',
+            name: convertIdToName(this.serviceId),
             userId: store.state.userId, 
             refresh: 3000,
             numDashboard: this.dashboardId,
             hidden: false,
             serviceId: this.serviceId,
-            widgetId: this.widgetId
+            widgetType: this.widgetId
           }
         })
         .then(function (response) {

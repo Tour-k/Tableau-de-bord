@@ -8,13 +8,13 @@
     ></v-progress-circular>
   </div>
   <div v-else>
-  <draggable v-model="myArray" v-if="!isEmpty">
+  <draggable v-model="widgets" v-if="!isEmpty">
     <transition-group>
         <div v-for="(element, index) in widgets" :key="index">
             <widgetContainer 
             :widgetId="element._id" 
             :serviceId="element.serviceId" 
-            :widgetType="element.widgetId" 
+            :widgetType="element.widgetType" 
             :params="element.params"></widgetContainer>
         </div>
     </transition-group>

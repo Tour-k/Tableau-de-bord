@@ -35,7 +35,7 @@
                     label="Pseudo Instagram*"
                     placeholder="Entrez le pseudo du compte que vous souhaitez suivre"
                     outlined
-                    v-model="pseudo"
+                    v-model="params[0]"
                     class="text-fieldInsta"
                   ></v-text-field>
                 </v-col>
@@ -73,27 +73,51 @@ export default {
       }
     },
   },
+  computed: {
+    defaultParam() {
+        let arrRes = "";
+        if (this.params.length == 0) {
+            arrRes = ["animauxtv"];
+        } else {
+            arrRes = this.params
+        }
+        return arrRes
+    }
+  },
   data () {
     return {
         drawer: false,
-        pseudo: 'difractomusic',
         url: 'http://localhost:3000/callExternAPI/insta/',
         instaDatas: {}
     }
-  },
+  }, 
   methods: {
     getApiURL(){
-      return  this.url + this.params[0] + '/';
+      return  this.url + this.defaultParam[0] + '/';
     }, 
     submitApi() {
       axios({
-        method: 'get',
-        url: this.getApiURL(),
-      })
-      .then(response => {
-        this.instaDatas = response.data;
-        this.drawer = false;
-      }) 
+        method: 'post',
+        url: 'http://localhost:3000/widget/updateWidget',
+        headers:{'Authorization' : `Basic {$store.state.token}`},
+        data: {
+            widgetId: this.widgetId, 
+            params: [this.defaultParam[0]]
+            }
+        })
+        .then(response => {
+            console.log(response.data.message);  
+            this.drawer = false;
+            axios({
+              method: 'get',
+              url: this.getApiURL(),
+            })
+            .then(response => {
+              this.instaDatas = response.data;
+              this.drawer = false;
+            }) 
+        });
+      
     }
   },
   mounted () {
