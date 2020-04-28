@@ -12,6 +12,7 @@ import Weather from "../components/widgets/Weather";
 import Weather5hours from "../components/widgets/Weather5hours";
 import WeatherDays from "../components/widgets/WeatherDays";
 import Clock from "../components/widgets/Clock";
+import Deezer from "../components/widgets/Deezer";
 
 
 Vue.use(VueRouter)
@@ -76,6 +77,11 @@ Vue.use(VueRouter)
       path:'/Clock',
       name: 'Clock',
       component: Clock
+    },
+    {
+      path: '/Deezer',
+      name: 'Deezer',
+      component: Deezer
     },
 ]
 

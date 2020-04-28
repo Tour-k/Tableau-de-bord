@@ -1,5 +1,5 @@
 <template>
-  <v-card raised tile class="mb-5" min-width="800px"  
+  <v-card raised tile class="mb-5" min-width="800px" 
   >
     <v-card-title class="pa-0 cardTitleWidgetContainer">
       <v-spacer></v-spacer>
@@ -17,6 +17,9 @@
       <div class="clock" v-else-if="serviceId == 2">
         <clock v-if="widgetType == 0" :widgetId="widgetId" :params="params"></clock>
       </div>
+      <div class="Deezer" v-else-if="serviceId == 3">
+        <Deezer v-if="widgetType == 0" :widgetId="widgetId" :params="params"></Deezer>
+      </div>
     </v-container>
   </v-card>
   
@@ -29,6 +32,7 @@ import weatherDay from '@/components/widgets/WeatherDays'
 import instagram from '@/components/widgets/Instagram'
 import clock from '@/components/widgets/Clock'
 import DeleteWidget from '@/components/popups/close-widget-popup'
+import Deezer from '@/components/widgets/Deezer'
 
 export default {  
   props: {
@@ -58,7 +62,8 @@ export default {
     weatherDay,
     instagram,
     clock, 
-    DeleteWidget
+    DeleteWidget,
+    Deezer
   }
 
 }

@@ -25,7 +25,10 @@ const store = new Vuex.Store({
     ]},
       { id: 2, serviceName: "Horloge", serviceIcon: "mdi-clock", widgets: [
         {id: 0, name: "Heure par fuseau", icon: "mdi-web", params: [{name: 'fuseau', label: 'Entrer votre fuseau horaire' ,  defaultValue: 'Paris'}]},
-    ]}
+    ]},
+    { id: 3, serviceName: "Deezer", serviceIcon: "mdi-music-box-outline", widgets: [
+      {id: 0, name: "Liste de titres", icon: "mdi-playlist-plus", params: [{name: 'Nom auteur', label: 'Entrer le nom votre artiset' ,  defaultValue: 'Metalica'}]},
+  ]}
     ]
   },
   mutations: {
